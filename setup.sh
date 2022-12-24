@@ -1,6 +1,8 @@
 DISK=/dev/nvme0n1
 SWAP_SIZE=16G
 
+set -e
+
 ######################
 # Partition the disk #
 ######################
