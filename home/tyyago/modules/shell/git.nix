@@ -13,12 +13,12 @@
   programs.git = {
     enable = true;
     lfs.enable = true;
-    userName = "rxyhn";
-    userEmail = "rxyhn.dev@gmail.com";
-    signing = {
-      key = "F01BC62D2BAE2122";
-      signByDefault = true;
-    };
+    userName = "tyyago";
+    userEmail = "tyyago.dev@gmail.com";
+    # signing = {
+    #   key = "F01BC62D2BAE2122";
+    #   signByDefault = true;
+    # };
 
     delta = {
       enable = true;

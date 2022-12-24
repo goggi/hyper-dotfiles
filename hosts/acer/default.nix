@@ -7,22 +7,15 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./nvidia.nix
 
     # Shared configuration across all machines
     ../shared
-    ../shared/users/rxyhn.nix
+    ../shared/users/tyyago.nix
   ];
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = [
-      "i915.force_probe=46a6"
-      "i915.enable_psr=0"
-      "i915.enable_guc=2"
-      "i8042.direct"
-      "i8042.dumbkbd"
-    ];
+    kernelParams = [ ];
 
     supportedFilesystems = ["btrfs"];
 
@@ -39,16 +32,11 @@
         version = 2;
         device = "nodev";
         efiSupport = true;
-        useOSProber = true;
+        useOSProber = false;
         enableCryptodisk = true;
         configurationLimit = 3;
       };
     };
-  };
-
-  # OpenGL and accelerated video playback
-  nixpkgs.config.packageOverrides = pkgs: {
-    vaapiIntel = pkgs.vaapiIntel.override {enableHybridCodec = true;};
   };
 
   hardware = {
@@ -57,17 +45,12 @@
       driSupport = true;
       driSupport32Bit = true;
       extraPackages = with pkgs; [
-        intel-media-driver
-        libvdpau-va-gl
-        vaapiIntel
-        vaapiVdpau
+		rocm-opencl-icd
+		rocm-opencl-runtime
+		amdvlk
       ];
       extraPackages32 = with pkgs.pkgsi686Linux; [
-        intel-media-driver
-        libva
-        libvdpau-va-gl
-        vaapiIntel
-        vaapiVdpau
+        driversi686Linux.amdvlk
       ];
     };
 
@@ -105,7 +88,7 @@
       settings = rec {
         initial_session = {
           command = "Hyprland";
-          user = "rxyhn";
+          user = "tyyago";
         };
         default_session = initial_session;
       };
@@ -129,7 +112,7 @@
   };
 
   # enable hyprland
-  programs.hyprland.nvidiaPatches = true;
+  programs.hyprland.enable = true;
 
   security = {
     pam.services.swaylock = {
@@ -143,60 +126,17 @@
     systemPackages = with pkgs; [
       acpi
       brightnessctl
-      cudaPackages_11.cudatoolkit
-      cudaPackages_11.cudnn
-      docker-client
-      docker-compose
-      docker-credential-helpers
       libva-utils
       ocl-icd
       qt5.qtwayland
       qt5ct
-      virt-manager
       vulkan-tools
     ];
 
     variables = {
       NIXOS_OZONE_WL = "1";
-      GBM_BACKEND = "nvidia-drm";
-      LIBVA_DRIVER_NAME = "nvidia";
-      __GL_GSYNC_ALLOWED = "0";
-      __GL_VRR_ALLOWED = "0";
       WLR_BACKEND = "vulkan";
-      WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
-      WLR_DRM_NO_ATOMIC = "1";
       WLR_NO_HARDWARE_CURSORS = "1";
-    };
-  };
-
-  virtualisation = {
-    spiceUSBRedirection.enable = true;
-
-    docker = {
-      enable = true;
-      enableNvidia = true;
-    };
-
-    podman = {
-      enable = true;
-      enableNvidia = true;
-      extraPackages = with pkgs; [
-        skopeo
-        conmon
-        runc
-      ];
-    };
-
-    libvirtd = {
-      enable = true;
-      qemu = {
-        package = pkgs.qemu_kvm;
-        ovmf = {
-          enable = true;
-          packages = with pkgs; [OVMFFull.fd];
-        };
-        swtpm.enable = true;
-      };
     };
   };
 

@@ -9,16 +9,16 @@ inputs: let
         useGlobalPkgs = true;
         useUserPackages = true;
         extraSpecialArgs = {inherit inputs self;};
-        users.rxyhn = ../home/rxyhn;
+        users.tyyago = ../home/tyyago;
       };
     }
   ];
 in {
-  lenovo = nixosSystem {
+  acer = nixosSystem {
     modules =
       [
-        ./lenovo
-        {networking.hostName = "lenovo";}
+        ./acer
+        {networking.hostName = "acerty";}
         inputs.hyprland.nixosModules.default
       ]
       ++ sharedModules;
