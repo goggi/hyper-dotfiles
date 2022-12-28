@@ -31,6 +31,7 @@
       curl
       gcc
       git
+      htop
       hddtemp
       jq
       lm_sensors

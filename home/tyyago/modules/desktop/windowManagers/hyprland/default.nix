@@ -46,7 +46,8 @@ in {
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
       XDG_SESSION_DESKTOP = "Hyprland";
-
+      XCURSOR_SIZE = "32";
+      GDK_SCALE = "2";
       # QT Variables
       DISABLE_QT5_COMPAT = "0";
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
@@ -54,7 +55,7 @@ in {
       QT_QPA_PLATFORMTHEME = "qt5ct";
       QT_STYLE_OVERRIDE = "kvantum";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-
+      NIXOS_OZONE_WL = "1";
       # Toolkit Backend Variables
       SDL_VIDEODRIVER = "wayland";
       _JAVA_AWT_WM_NONREPARENTING = "1";
@@ -63,10 +64,9 @@ in {
       MOZ_ENABLE_WAYLAND = "1";
     };
   };
-
   wayland.windowManager.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.default.override {nvidiaPatches = true;};
+    package = inputs.hyprland.packages.${pkgs.system}.default.override {};
     systemdIntegration = true;
     extraConfig = import ./config.nix;
   };
@@ -88,7 +88,6 @@ in {
       PartOf = ["graphical-session.target"];
       After = ["graphical-session.target"];
     };
-
     Service = {
       ExecStart = "${pkgs.swaybg}/bin/swaybg --mode fill --image ${wallpaper}";
       Restart = "on-failure";

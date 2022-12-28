@@ -20,6 +20,7 @@ in {
     alsa-utils
     bandwhich
     bc
+    bash
     blueberry
     cairo
     cached-nix-shell
@@ -36,6 +37,7 @@ in {
     gnused
     gnutls
     grex
+    nano
     hyperfine
     imagemagick
     inotify-tools
@@ -62,6 +64,7 @@ in {
     xdg-utils
     xh
     xorg.xhost
-    zoom-us
+    _1password
+    _1password-gui-beta
   ];
 }

@@ -42,16 +42,6 @@
   hardware = {
     opengl = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-      extraPackages = with pkgs; [
-		rocm-opencl-icd
-		rocm-opencl-runtime
-		amdvlk
-      ];
-      extraPackages32 = with pkgs.pkgsi686Linux; [
-        driversi686Linux.amdvlk
-      ];
     };
 
     bluetooth = {
@@ -62,13 +52,9 @@
     enableRedistributableFirmware = true;
     pulseaudio.enable = false;
   };
-
+  
+  programs.xwayland.enable = true;
   # compresses half the ram for use as swap
-  zramSwap = {
-    enable = true;
-    memoryPercent = 50;
-  };
-
   services = {
     btrfs.autoScrub.enable = true;
     acpid.enable = true;
@@ -113,7 +99,8 @@
 
   # enable hyprland
   programs.hyprland.enable = true;
-
+  services.gnome.gnome-keyring.enable = true;
+     
   security = {
     pam.services.swaylock = {
       text = ''
@@ -130,13 +117,13 @@
       ocl-icd
       qt5.qtwayland
       qt5ct
-      vulkan-tools
+      vscode
+      chromium
+      microsoft-edge
     ];
 
     variables = {
       NIXOS_OZONE_WL = "1";
-      WLR_BACKEND = "vulkan";
-      WLR_NO_HARDWARE_CURSORS = "1";
     };
   };
 

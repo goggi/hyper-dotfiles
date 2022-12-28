@@ -98,6 +98,8 @@
     # nixos-configs with home-manager
     nixosConfigurations = import ./hosts inputs;
 
+    # packages."${system}" = mapModules ./pkgs (p: pkgs.callPackage p { });
+
     # dev shell (for direnv)
     devShells.${system}.default = pkgs.mkShell {
       packages = with pkgs; [
