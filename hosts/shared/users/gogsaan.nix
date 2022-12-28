@@ -9,7 +9,7 @@
 in {
   users.mutableUsers = true;
   users.users.gogsaan = {
-    description = "Thiago Santos";
+    description = "Gogsaan";
     isNormalUser = true;
     shell = pkgs.zsh;
     initialPassword = "pwd";
