@@ -10,12 +10,12 @@
 
     # Shared configuration across all machines
     ../shared
-    ../shared/users/tyyago.nix
+    ../shared/users/gogsaan.nix
   ];
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = [ ];
+    kernelParams = [];
 
     supportedFilesystems = ["btrfs"];
 
@@ -52,7 +52,7 @@
     enableRedistributableFirmware = true;
     pulseaudio.enable = false;
   };
-  
+
   programs.xwayland.enable = true;
   # compresses half the ram for use as swap
   services = {
@@ -74,7 +74,7 @@
       settings = rec {
         initial_session = {
           command = "Hyprland";
-          user = "tyyago";
+          user = "gogsaan";
         };
         default_session = initial_session;
       };
@@ -100,7 +100,7 @@
   # enable hyprland
   programs.hyprland.enable = true;
   services.gnome.gnome-keyring.enable = true;
-     
+
   security = {
     pam.services.swaylock = {
       text = ''

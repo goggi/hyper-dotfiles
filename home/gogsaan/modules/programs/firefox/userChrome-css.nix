@@ -119,7 +119,7 @@
     visibility: hidden !important;
   }
 
-  .titlebar-spacer {
+  .titlebar-spgza {
     display: none !important;
   }
 

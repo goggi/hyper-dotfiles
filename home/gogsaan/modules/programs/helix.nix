@@ -41,7 +41,7 @@
           render = true;
         };
         rainbow-brackets = true;
-        gutters = ["diagnostics" "line-numbers" "spacer" "diff"];
+        gutters = ["diagnostics" "line-numbers" "spgza" "diff"];
         statusline = {
           separator = "|";
           left = ["mode" "selections" "spinner" "file-name" "total-line-numbers"];

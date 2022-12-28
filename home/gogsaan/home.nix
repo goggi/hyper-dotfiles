@@ -1,7 +1,7 @@
 {
   home = {
-    username = "tyyago";
-    homeDirectory = "/home/tyyago";
+    username = "gogsaan";
+    homeDirectory = "/home/gogsaan";
     stateVersion = "22.11";
     extraOutputsToInstall = ["doc" "devdoc"];
   };
