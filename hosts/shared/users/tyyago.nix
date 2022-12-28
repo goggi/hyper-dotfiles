@@ -8,11 +8,11 @@
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in {
   users.mutableUsers = true;
-  users.users.rxyhn = {
-    description = "Rayhan Pratama";
+  users.users.tyyago = {
+    description = "Thiago Santos";
     isNormalUser = true;
     shell = pkgs.zsh;
-    initialPassword = "nixos";
+    initialPassword = "pwd";
     extraGroups =
       [
         "wheel"
@@ -29,6 +29,6 @@ in {
         "mysql"
       ];
 
-    openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAIaeDlsQNZuf95V5QNjfV8eZncS3J0kV4EWvOlcavjh rxyhn@lenovo"];
+    openssh.authorizedKeys.keys = [ ];
   };
 }

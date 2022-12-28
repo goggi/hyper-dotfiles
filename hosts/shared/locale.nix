@@ -8,12 +8,12 @@
 
     supportedLocales = lib.mkDefault [
       "en_US.UTF-8/UTF-8"
-      "ja_JP.UTF-8/UTF-8"
+      "pt_BR.UTF-8/UTF-8"
     ];
   };
 
   time = {
-    timeZone = lib.mkDefault "Asia/Jakarta";
+    timeZone = lib.mkDefault "America/Sao_Paulo";
     hardwareClockInLocalTime = true;
   };
 }
