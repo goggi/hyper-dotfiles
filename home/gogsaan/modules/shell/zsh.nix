@@ -271,11 +271,11 @@
         src = zsh-nix-shell;
         file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
       }
-      {
-        name = "zsh-vi-mode";
-        src = zsh-vi-mode;
-        file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
-      }
+      # {
+      #   name = "zsh-vi-mode";
+      #   src = zsh-vi-mode;
+      #   file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+      # }
       {
         name = "fzf-tab";
         file = "fzf-tab.plugin.zsh";
