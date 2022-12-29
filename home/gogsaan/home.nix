@@ -11,43 +11,43 @@
     initialPassword = "test";
 
     # Seems like it needs to be commented out on first boot,
-    persistence = {
-      "/persist/home/gogsaan" = {
-        directories = [
-          "Documents"
-          "Downloads"
-          "Pictures"
-          "Videos"
-          "Projects"
-          {
-            directory = ".ssh";
-            mode = "0700";
-          }
-          {
-            directory = ".gnupg";
-            mode = "0700";
-          }
-          {
-            directory = ".local/share/keyrings";
-            mode = "0700";
-          }
-          {
-            directory = ".nixops";
-            mode = "0700";
-          }
-          {
-            directory = ".mozilla";
-          }
-          {
-            directory = ".config/Code";
-          }
-        ];
-        files = [
-          ".zsh_history"
-        ];
-        allowOther = true;
-      };
-    };
+    # persistence = {
+    #   "/persist/home/gogsaan" = {
+    #     directories = [
+    #       "Documents"
+    #       "Downloads"
+    #       "Pictures"
+    #       "Videos"
+    #       "Projects"
+    #       {
+    #         directory = ".ssh";
+    #         mode = "0700";
+    #       }
+    #       {
+    #         directory = ".gnupg";
+    #         mode = "0700";
+    #       }
+    #       {
+    #         directory = ".local/share/keyrings";
+    #         mode = "0700";
+    #       }
+    #       {
+    #         directory = ".nixops";
+    #         mode = "0700";
+    #       }
+    #       {
+    #         directory = ".mozilla";
+    #       }
+    #       {
+    #         directory = ".config/Code";
+    #       }
+    #     ];
+    #     files = [
+    #       ".zsh_history"
+    #     ];
+    #     allowOther = true;
+    #   };
+    # };
   };
 
   # disable manuals as nmd fails to build often
