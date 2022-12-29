@@ -14,6 +14,7 @@
   });
 in {
   home.packages = with pkgs; [
+    inputs.webcord.packages.${pkgs.system}.default
     alsa-lib
     alsa-plugins
     alsa-tools
@@ -66,5 +67,11 @@ in {
     xorg.xhost
     _1password
     _1password-gui-beta
+    chromium
+    microsoft-edge
   ];
+  xdg.desktopEntries.microsoft-edge = {
+    name = "Microsoft Edge";
+    exec = "microsoft-edge --enable-features=UseOzonePlatform --ozone-platform=wayland";
+  };
 }

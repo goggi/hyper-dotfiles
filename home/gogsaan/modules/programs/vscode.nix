@@ -29,7 +29,7 @@
         ms-vscode-remote.remote-ssh
         ms-vscode.cpptools
         naumovs.color-highlight
-        oderwat.indent-rainbow
+        # oderwat.indent-rainbow
         pkief.material-icon-theme
         rust-lang.rust-analyzer
         shardulm94.trailing-spaces

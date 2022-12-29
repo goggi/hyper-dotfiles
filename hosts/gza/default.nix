@@ -117,9 +117,6 @@
       ocl-icd
       qt5.qtwayland
       qt5ct
-      vscode
-      chromium
-      microsoft-edge
     ];
 
     variables = {

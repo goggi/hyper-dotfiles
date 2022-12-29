@@ -13,7 +13,7 @@
     hyprland.url = "github:hyprwm/Hyprland/";
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     hyprland-contrib.url = "github:hyprwm/contrib";
-
+    webcord.url = "github:fufexan/webcord-flake";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,6 +45,7 @@
   outputs = {
     self,
     nixpkgs,
+    webcord,
     ...
   } @ inputs: let
     system = "x86_64-linux";

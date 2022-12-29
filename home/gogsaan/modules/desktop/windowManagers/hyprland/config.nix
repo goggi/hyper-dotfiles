@@ -232,6 +232,22 @@
   bind = $mainMod, down, movefocus, d
 
 
+  # Function keys
+  bind = ,XF86MonBrightnessUp, exec, brightness set +5%
+  bind = ,XF86MonBrightnessDown, exec, brightness set 5%-
+  bind = ,XF86AudioRaiseVolume, exec, volume -i 5
+  bind = ,XF86AudioLowerVolume, exec, volume -d 5
+  bind = ,XF86AudioMute, exec, volume -t
+  bind = ,XF86AudioMicMute, exec, microphone -t
+  # Screenshots
+  $screenshotarea = hyprctl keyword animation "fadeOut,0,0,default"; grimblast --notify copysave area; hyprctl keyword animation "fadeOut,1,4,default"
+  bind = , Print, exec, $screenshotarea
+  bind = CTRL, Print, exec, grimblast --notify --cursor copysave output
+  bind = SUPER SHIFT CTRL, R, exec, grimblast --notify --cursor copysave output
+  bind = ALT, Print, exec, grimblast --notify --cursor copysave screen
+  bind = SUPER SHIFT ALT, R, exec, grimblast --notify --cursor copysave screen
+
+
   # Move
   bind=SUPERSHIFT,left,movewindow,l
   bind=SUPERSHIFT,right,movewindow,r

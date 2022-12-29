@@ -9,7 +9,7 @@ inputs: let
         useGlobalPkgs = true;
         useUserPackages = true;
         extraSpecialArgs = {inherit inputs self;};
-        users.gogsaan = ../home/gogsaan;
+        users.gogsaan = ../home/gogsaan/gza.nix;
       };
     }
   ];
@@ -18,7 +18,7 @@ in {
     modules =
       [
         ./gza
-        {networking.hostName = "gzaty";}
+        {networking.hostName = "gza";}
         inputs.hyprland.nixosModules.default
       ]
       ++ sharedModules;
