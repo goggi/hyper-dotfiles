@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    impermanence.url = "github:nix-community/impermanence";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
     hardware.url = "github:nixos/nixos-hardware";

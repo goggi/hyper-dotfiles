@@ -14,7 +14,9 @@
   ];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
+    #kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    #binfmt.emulatedSystems = ["aarch64-linux"];
+    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
     kernelParams = [];
 
     supportedFilesystems = ["btrfs"];

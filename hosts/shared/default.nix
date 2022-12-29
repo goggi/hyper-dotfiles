@@ -65,6 +65,7 @@
     dconf.enable = true;
     nm-applet.enable = true;
     seahorse.enable = true;
+    fuse.userAllowOther = true;
 
     npm = {
       enable = true;
