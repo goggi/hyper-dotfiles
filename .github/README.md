@@ -73,9 +73,14 @@ NixOS / Home-Manager / Flake
    Setup the encrypted LUKS partition and open it:
 
    ```bash
-   $ cryptsetup luksFormat /dev/nvme0n1p2
-   $ cryptsetup config /dev/nvme0n1p2 --label cryptroot
-   $ cryptsetup luksOpen /dev/nvme0n1p2 enc-pv
+   cryptsetup luksFormat /dev/nvme0n1p2
+   cryptsetup config /dev/nvme0n1p2 --label cryptroot
+   cryptsetup luksOpen /dev/nvme0n1p2 enc-pv
+   git clone https://github.com/goggi/hyper-dotfiles
+   cd hyper-dotfiles
+   chmod +x setup.sh
+   nix-shell -p nixFlakes
+   nixos-install --flake github:goggi/hyper-dotfiles#gza --impure
    ```
 
    We create two logical volumes, a 24GB swap parition and the rest will be our root filesystem
