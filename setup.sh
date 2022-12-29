@@ -59,7 +59,7 @@ umount /mnt
 #########################
 
 mount -o subvol=root,compress=zstd,noatime,ssd,space_cache=v2 /dev/vg/root /mnt
-mkdir -p /mnt/{home,nix,var/log}
+mkdir -p /mnt/{persist,nix,var/log}
 mount -o subvol=persist,compress=zstd,noatime,ssd,space_cache=v2 /dev/vg/root /mnt/persist
 mount -o subvol=nix,compress=zstd,noatime,ssd,space_cache=v2 /dev/vg/root /mnt/nix
 mount -o subvol=log,compress=zstd,noatime,ssd,space_cache=v2 /dev/vg/root /mnt/var/log
