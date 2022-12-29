@@ -1,6 +1,6 @@
 {lib, ...}: {
   i18n = {
-    defaultLocale = lib.mkDefault "sv_SE.UTF-8";
+    defaultLocale = lib.mkDefault "en_US.UTF-8";
 
     extraLocaleSettings = {
       LC_TIME = lib.mkDefault "sv_SE.UTF-8";
