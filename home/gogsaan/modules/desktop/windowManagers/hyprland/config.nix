@@ -1,7 +1,7 @@
 ''
     # Monitors
-    monitor=DP-3,preferred,1505x0,1.3
-    monitor=DP-2,preferred,0x890,1.3
+    monitor=DP-3,preferred,1505x0,1.2
+    monitor=DP-2,preferred,0x890,1.2
     monitor=DP-2,addreserved,0,0,700,700
 
     # Autostart programs
@@ -287,7 +287,6 @@
   wsbind=8,DP-3
   wsbind=9,DP-3
   wsbind=0,DP-2
-
 
   # Move active window to a workspace with mainMod + SHIFT + [0-9]
   bind = $mainMod SHIFT, 1, movetoworkspace, 1
