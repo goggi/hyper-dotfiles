@@ -36,11 +36,11 @@
     options = ["subvol=root" "compress=zstd" "noatime" "ssd" "space_cache=v2"];
   };
 
-  fileSystems."/home" = {
+  fileSystems."/persist" = {
     device = "/dev/disk/by-label/root";
     fsType = "btrfs";
-    options = ["subvol=home" "compress=zstd" "noatime" "ssd" "space_cache=v2"];
-  };
+    options = ["subvol=persist" "compress=zstd" "noatime" "ssd" "space_cache=v2"];
+  };  
 
   fileSystems."/nix" = {
     device = "/dev/disk/by-label/root";
