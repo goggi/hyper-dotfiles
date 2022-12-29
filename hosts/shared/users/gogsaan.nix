@@ -12,7 +12,7 @@ in {
     description = "Gogsaan";
     isNormalUser = true;
     shell = pkgs.zsh;
-    initialPassword = "pwd";
+    hashedPassword = "$6$ao4GNMyGjn0Z2URn$TvSlCHgpf40AKMNiG7aUnxsNVA8ljjLyC1fdd1chwAsx3/4ZnApmf9dG5.xSsMcrX2FmcoiKq5RkxTg2UIM.L0";
     extraGroups =
       [
         "i2c"
