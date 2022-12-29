@@ -62,7 +62,7 @@ NixOS / Home-Manager / Flake
    We create a 512MB EFI boot partition (`/dev/nvme0n1p1`) and the rest will be our LUKS encrypted physical volume for LVM (`/dev/nvme0n1p2`).
 
    ```bash
-   $ gdisk /dev/nvme0n1
+   gdisk /dev/nvme0n1
    ```
 
    - `o` (create new empty partition table)
@@ -74,13 +74,16 @@ NixOS / Home-Manager / Flake
 
    ```bash
    cryptsetup luksFormat /dev/nvme0n1p2
+   
    cryptsetup config /dev/nvme0n1p2 --label cryptroot
    cryptsetup luksOpen /dev/nvme0n1p2 enc-pv
+   
    git clone https://github.com/goggi/hyper-dotfiles
    cd hyper-dotfiles
    chmod +x setup.sh
    ./setup.sh
    nix-shell -p nixFlakes
+   
    nixos-install --flake github:goggi/hyper-dotfiles#gza --impure
    ```
 
