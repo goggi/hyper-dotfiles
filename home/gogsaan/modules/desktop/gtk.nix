@@ -6,6 +6,7 @@
   gtk = {
     enable = true;
     theme = {
+      #name = "Catppuccin-Latte-Standard-Mauve-Light";
       name = "Catppuccin-Mocha-Standard-Mauve-Dark";
       package = pkgs.catppuccin-gtk;
     };

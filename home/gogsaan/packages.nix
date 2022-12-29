@@ -15,6 +15,8 @@
 in {
   home.packages = with pkgs; [
     inputs.webcord.packages.${pkgs.system}.default
+    ddcutil
+    # darkman
     alsa-lib
     alsa-plugins
     alsa-tools
@@ -74,4 +76,9 @@ in {
     name = "Microsoft Edge";
     exec = "microsoft-edge --enable-features=UseOzonePlatform --ozone-platform=wayland";
   };
+
+  # APP Configurtaions
+  # Darkman
+  # xdg.configFile."darkman/config.yaml".text = import ./cfgs/darkman/darkman.nix;
+  # xdg.dataFile."dark-mode.d/gtk-theme.sh".text = import ./cfgs/darkman/light/gtk-theme.nix;
 }

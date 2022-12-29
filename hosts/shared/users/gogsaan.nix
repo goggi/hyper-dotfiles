@@ -15,6 +15,7 @@ in {
     initialPassword = "pwd";
     extraGroups =
       [
+        "i2c"
         "wheel"
         "networkmanager"
         "video"

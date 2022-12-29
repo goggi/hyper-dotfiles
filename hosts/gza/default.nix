@@ -34,7 +34,7 @@
         efiSupport = true;
         useOSProber = false;
         enableCryptodisk = true;
-        configurationLimit = 3;
+        configurationLimit = 20;
       };
     };
   };
@@ -53,21 +53,11 @@
     pulseaudio.enable = false;
   };
 
-  programs.xwayland.enable = true;
-  # compresses half the ram for use as swap
   services = {
     btrfs.autoScrub.enable = true;
     acpid.enable = true;
     thermald.enable = true;
-    upower.enable = true;
-
-    tlp = {
-      enable = true;
-      settings = {
-        START_CHARGE_THRESH_BAT0 = 0;
-        STOP_CHARGE_THRESH_BAT0 = 80;
-      };
-    };
+    upower.enable = false;
 
     greetd = {
       enable = true;
@@ -91,7 +81,7 @@
 
   xdg.portal = {
     enable = true;
-    wlr.enable = false;
+    wlr.enable = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
     ];
@@ -99,6 +89,7 @@
 
   # enable hyprland
   programs.hyprland.enable = true;
+  programs.xwayland.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
   security = {
@@ -112,7 +103,6 @@
   environment = {
     systemPackages = with pkgs; [
       acpi
-      brightnessctl
       libva-utils
       ocl-icd
       qt5.qtwayland

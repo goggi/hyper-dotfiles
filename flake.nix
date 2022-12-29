@@ -13,7 +13,7 @@
     hyprland.url = "github:hyprwm/Hyprland/";
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     hyprland-contrib.url = "github:hyprwm/contrib";
-    webcord.url = "github:fufexan/webcord-flake";
+    webcord.url = "github:fufexan/webcord-flake?rev=e846ea3cebd7e2363294d3e9265a27f1aff24d29";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

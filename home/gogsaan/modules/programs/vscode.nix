@@ -51,6 +51,8 @@
 
     userSettings = {
       "workbench.colorTheme" = "Catppuccin Mocha";
+      "workbench.preferredLightColorTheme" = "Catppuccin Latte";
+      "workbench.preferredDarkColorTheme" = "Catppuccin Mocha";
       "catppuccin.accentColor" = "mauve";
       "workbench.iconTheme" = "material-icon-theme";
       "editor.fontFamily" = "'monospace', monospace";
@@ -74,6 +76,7 @@
       "editor.inlineSuggest.enabled" = true;
       "editor.smoothScrolling" = true;
       "editor.suggestSelection" = "first";
+      "window.autoDetectColorScheme" = true;
       "editor.guides.indentation" = true;
       "editor.guides.bracketPairs" = true;
       "editor.bracketPairColorization.enabled" = true;

@@ -1,19 +1,20 @@
 {lib, ...}: {
   i18n = {
-    defaultLocale = lib.mkDefault "en_US.UTF-8";
+    defaultLocale = lib.mkDefault "sv_SE.UTF-8";
 
     extraLocaleSettings = {
-      LC_TIME = lib.mkDefault "en_US.UTF-8";
+      LC_TIME = lib.mkDefault "sv_SE.UTF-8";
     };
 
     supportedLocales = lib.mkDefault [
       "en_US.UTF-8/UTF-8"
       "pt_BR.UTF-8/UTF-8"
+      "sv_SE.UTF-8/UTF-8"
     ];
   };
 
   time = {
-    timeZone = lib.mkDefault "America/Sao_Paulo";
+    timeZone = lib.mkDefault "Europe/Stockholm";
     hardwareClockInLocalTime = true;
   };
 }

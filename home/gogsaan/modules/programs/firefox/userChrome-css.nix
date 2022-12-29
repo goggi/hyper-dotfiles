@@ -29,6 +29,15 @@
     box-shadow: none !important;
   }
 
+  #navigator-toolbox * { font-size: 14px !important; }
+
+  urlbar, #searchbar {
+
+    font-size: 10px !important;
+    font-weight: bold !important;
+
+  }
+
   ::selection {
     background-color: var(--srf-accent);
     color: var(--srf-primary);

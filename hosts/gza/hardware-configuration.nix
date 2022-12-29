@@ -27,7 +27,7 @@
     ++ config.boot.initrd.luks.cryptoModules;
 
   boot.initrd.kernelModules = ["dm-snapshot" "amdgpu"];
-  boot.kernelModules = ["kvm-amd"];
+  boot.kernelModules = ["kvm-amd" "i2c-dev"];
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
@@ -64,16 +64,13 @@
     {device = "/dev/disk/by-label/swap";}
   ];
 
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   # high-resolution display
   hardware.video.hidpi.enable = lib.mkDefault true;
+  # DDCUTIL
+  hardware.i2c.enable = true;
 }

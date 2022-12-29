@@ -1070,11 +1070,11 @@
     },
     "nixpkgs_8": {
       "locked": {
-        "lastModified": 1670507980,
-        "narHash": "sha256-riNZa0xzM1it3pzxciwALeMs+0CsBMWIW2FqulzK8vM=",
+        "lastModified": 1672080458,
+        "narHash": "sha256-Ukjn8YUwZevxDPaVUmTx2sf9bCcIJSasmLz+xjGBKrs=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "2787fc7d1e51404678614bf0fe92fc296746eec0",
+        "rev": "1eb875e811dd59e21e77f6337f2c1592889b48b3",
         "type": "github"
       },
       "original": {
@@ -1365,27 +1365,28 @@
         "webcord": "webcord_2"
       },
       "locked": {
-        "lastModified": 1670874335,
-        "narHash": "sha256-nJ1LUVj3dIHP5B+XkZXUvY39OqaZn/MMHSFwsOSPnwI=",
+        "lastModified": 1670858114,
+        "narHash": "sha256-3FTK6wmNlxkXPjG06XVyelccV5j4sSbUoMRFTZDUfU0=",
         "owner": "fufexan",
         "repo": "webcord-flake",
-        "rev": "b462d57c36d664b48f047c96b2f9de091bff6e8b",
+        "rev": "e846ea3cebd7e2363294d3e9265a27f1aff24d29",
         "type": "github"
       },
       "original": {
         "owner": "fufexan",
         "repo": "webcord-flake",
+        "rev": "e846ea3cebd7e2363294d3e9265a27f1aff24d29",
         "type": "github"
       }
     },
     "webcord_2": {
       "flake": false,
       "locked": {
-        "lastModified": 1670713990,
-        "narHash": "sha256-e+y/M+/gjezHoNrdXeFhqtvxbPdhRSDOQlwK1nUhNfo=",
+        "lastModified": 1672182336,
+        "narHash": "sha256-/6g3uaTbHnb9TH6rSkqfAirY07fGSbVz+rGSL7Kme1k=",
         "owner": "SpacingBat3",
         "repo": "WebCord",
-        "rev": "80ba858c025e0bb59510f7136211948d8ae10ece",
+        "rev": "50d57fe4072d662a1e95821ec4d3412e4d57e4cb",
         "type": "github"
       },
       "original": {
