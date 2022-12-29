@@ -1,7 +1,3 @@
-```sh
-cat https://raw.githubusercontent.com/gogsaano/trying-hyprland-nixos/main/setup.sh -O
-```
-
 <!-- Rxyhn's dotfiles -->
 <!-- https://github.com/rxyhn/dotfiles -->
 
