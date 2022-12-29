@@ -8,7 +8,7 @@
     homeDirectory = "/home/gogsaan";
     stateVersion = "22.11";
     extraOutputsToInstall = ["doc" "devdoc"];
-    initialPassword = "test";
+    hashedPassword = "$6$ao4GNMyGjn0Z2URn$TvSlCHgpf40AKMNiG7aUnxsNVA8ljjLyC1fdd1chwAsx3/4ZnApmf9dG5.xSsMcrX2FmcoiKq5RkxTg2UIM.L0";
 
     # Seems like it needs to be commented out on first boot,
     # persistence = {
