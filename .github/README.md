@@ -79,6 +79,7 @@ NixOS / Home-Manager / Flake
    git clone https://github.com/goggi/hyper-dotfiles
    cd hyper-dotfiles
    chmod +x setup.sh
+   ./setup.sh
    nix-shell -p nixFlakes
    nixos-install --flake github:goggi/hyper-dotfiles#gza --impure
    ```
