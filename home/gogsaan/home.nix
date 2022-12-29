@@ -9,18 +9,18 @@
     stateVersion = "22.11";
     extraOutputsToInstall = ["doc" "devdoc"];
 
-    persistence = {
-      "/persist/home/gogsaan" = {
-        directories = [
-          "Documents"
-          "Downloads"
-          "Pictures"
-          "Videos"
-          "Projects"
-        ];
-        allowOther = true;
-      };
-    };
+    # persistence = {
+    #   "/persist/home/gogsaan" = {
+    #     directories = [
+    #       "Documents"
+    #       "Downloads"
+    #       "Pictures"
+    #       "Videos"
+    #       "Projects"
+    #     ];
+    #     allowOther = true;
+    #   };
+    # };
   };
 
   # disable manuals as nmd fails to build often

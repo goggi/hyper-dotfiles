@@ -30,6 +30,8 @@
     rm /btrfs
   '';
 in {
+
+  
   #boot.initrd.postDeviceCommands = lib.mkBefore wipeScript;
 
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];
