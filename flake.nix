@@ -2,39 +2,46 @@
   description = "Rxyhn's NixOS Configuration with Home-Manager & Flake";
 
   inputs = {
+    # NixOS
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     impermanence.url = "github:nix-community/impermanence";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
-    nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
-    hardware.url = "github:nixos/nixos-hardware";
     nur.url = "github:nix-community/NUR";
-    devshell.url = "github:numtide/devshell";
-    flake-utils.url = "github:numtide/flake-utils";
-    helix.url = "github:SoraTenshi/helix/experimental";
-    hyprland.url = "github:hyprwm/Hyprland/";
-    xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
-    hyprland-contrib.url = "github:hyprwm/contrib";
-    webcord.url = "github:fufexan/webcord-flake?rev=e846ea3cebd7e2363294d3e9265a27f1aff24d29";
+    hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    crane = {
-      url = "github:ipetkov/crane";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # Hyprland
+    hyprland.url = "github:hyprwm/Hyprland/";
+    xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
+    hyprland-contrib.url = "github:hyprwm/contrib";
 
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # Applciatons
+    # webcord.url = "github:fufexan/webcord-flake";
 
-    nil = {
-      url = "github:oxalica/nil";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.rust-overlay.follows = "rust-overlay";
-    };
+    # Other
+    nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
+    devshell.url = "github:numtide/devshell";
+    flake-utils.url = "github:numtide/flake-utils";
+
+    # crane = {
+    #   url = "github:ipetkov/crane";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
+    # Rust Struff that we might not need
+    # rust-overlay = {
+    #   url = "github:oxalica/rust-overlay";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
+    # nil = {
+    #   url = "github:oxalica/nil";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.rust-overlay.follows = "rust-overlay";
+    # };
 
     # Non Flakes
     sf-mono-liga = {
@@ -46,7 +53,7 @@
   outputs = {
     self,
     nixpkgs,
-    webcord,
+    # webcord,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -73,7 +80,7 @@
             in
               {
                 # Packages provided by flake inputs
-                crane-lib = crane.lib.${system};
+                # crane-lib = crane.lib.${system};
               }
               // (with nixpkgs-f2k.packages.${system}; {
                 # Overlays with f2k's repo
@@ -89,7 +96,7 @@
           nur.overlay
           nixpkgs-wayland.overlay
           nixpkgs-f2k.overlays.default
-          rust-overlay.overlays.default
+          # rust-overlay.overlays.default
         ]
         # Overlays from ./overlays directory
         ++ (importNixFiles ./overlays);

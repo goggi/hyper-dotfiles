@@ -8,23 +8,31 @@
     homeDirectory = "/home/gogsaan";
     stateVersion = "22.11";
     extraOutputsToInstall = ["doc" "devdoc"];
-
     # Seems like it needs to be commented out on first boot,
     persistence = {
       "/persist/home/gogsaan" = {
         directories = [
           "Documents"
+          "Applications"
           "Downloads"
           "Pictures"
           "Videos"
           "Projects"
           ".config/Code"
+          ".config/certs"
+          ".config/WebCord"
+          ".config/vpn"
+          ".config/Yubico"
           ".config/1Password"
           ".config/microsoft-edge"
+          ".config/google-chrome-beta"
           ".mozilla"
           ".gnupg"
           ".ssh"
+          ".aws"
           ".local/share/keyrings"
+          ".local/share/applications"
+          ".local/share/desktop-directories"
           # {
           #   directory = ".ssh";
           # }

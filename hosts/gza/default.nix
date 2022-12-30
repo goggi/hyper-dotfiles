@@ -11,12 +11,14 @@
     # Shared configuration across all machines
     ../shared
     ../shared/users/gogsaan.nix
+    ../shared/optional/gamemode.nix
   ];
 
   boot = {
     #kernelPackages = pkgs.linuxKernel.packages.linux_zen;
     binfmt.emulatedSystems = ["aarch64-linux"];
-    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    # kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [];
 
     supportedFilesystems = ["btrfs"];
@@ -44,6 +46,8 @@
   hardware = {
     opengl = {
       enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
     };
 
     bluetooth = {
@@ -54,6 +58,15 @@
     enableRedistributableFirmware = true;
     pulseaudio.enable = false;
   };
+
+  hardware.opengl.extraPackages = with pkgs; [
+    amdvlk
+    rocm-opencl-icd
+    rocm-opencl-runtime
+  ];
+  hardware.opengl.extraPackages32 = with pkgs; [
+    driversi686Linux.amdvlk
+  ];
 
   services = {
     btrfs.autoScrub.enable = true;
@@ -92,6 +105,9 @@
   # enable hyprland
   programs.hyprland.enable = true;
   programs.xwayland.enable = true;
+  services.xserver.enable = false;
+  services.xserver.videoDrivers = ["amdgpu"];
+
   services.gnome.gnome-keyring.enable = true;
 
   security = {

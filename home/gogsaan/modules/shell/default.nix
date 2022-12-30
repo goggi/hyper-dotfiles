@@ -72,11 +72,11 @@ in {
   };
 
   programs = {
-    ssh.enable = true;
+    ssh.enable = false;
 
     gpg = {
       enable = true;
-      homedir = "${config.xdg.dataHome}/gnupg";
+      homedir = "${config.home.homeDirectory}/.gnupg";
     };
   };
 

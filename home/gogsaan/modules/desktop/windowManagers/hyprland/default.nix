@@ -17,7 +17,7 @@
 in {
   imports = [
     inputs.hyprland.homeManagerModules.default
-
+    ../../../../../features/desktop/common/wayland
     ../../dunst
     ../../waybar
     ../../gtk.nix
@@ -27,72 +27,18 @@ in {
 
   home = {
     packages = with pkgs; [
-      clipman
-      grim
       ocrScript
       pngquant
       python39Packages.requests
-      slurp
-      swayidle
       tesseract5
-      wf-recorder
-      wl-clipboard
       xorg.xprop
       inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
     ];
-
-    sessionVariables = {
-      # XDG Specifications
-      XDG_CURRENT_DESKTOP = "Hyprland";
-      XDG_SESSION_TYPE = "wayland";
-      XDG_SESSION_DESKTOP = "Hyprland";
-      XCURSOR_SIZE = "32";
-      GDK_SCALE = "2";
-      # QT Variables
-      DISABLE_QT5_COMPAT = "0";
-      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-      QT_QPA_PLATFORM = "wayland";
-      QT_QPA_PLATFORMTHEME = "qt5ct";
-      QT_STYLE_OVERRIDE = "kvantum";
-      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-      NIXOS_OZONE_WL = "1";
-      # Toolkit Backend Variables
-      SDL_VIDEODRIVER = "wayland";
-      _JAVA_AWT_WM_NONREPARENTING = "1";
-      CLUTTER_BACKEND = "wayland";
-      GDK_BACKEND = "wayland";
-      MOZ_ENABLE_WAYLAND = "1";
-    };
   };
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.default.override {};
     systemdIntegration = true;
     extraConfig = import ./config.nix;
-  };
-
-  services.gammastep = {
-    enable = true;
-    provider = "geoclue2";
-  };
-
-  systemd.user.services.swaybg = let
-    wallpaper = builtins.fetchurl rec {
-      name = "wallpaper-${sha256}.png";
-      url = "https://raw.githubusercontent.com/rxyhn/wallpapers/main/catppuccin/cat_leaves.png";
-      sha256 = "1894y61nx3p970qzxmqjvslaalbl2skj5sgzvk38xd4qmlmi9s4i";
-    };
-  in {
-    Unit = {
-      Description = "Wayland wallpaper daemon";
-      PartOf = ["graphical-session.target"];
-      After = ["graphical-session.target"];
-    };
-    Service = {
-      ExecStart = "${pkgs.swaybg}/bin/swaybg --mode fill --image ${wallpaper}";
-      Restart = "on-failure";
-    };
-
-    Install.WantedBy = ["graphical-session.target"];
   };
 }

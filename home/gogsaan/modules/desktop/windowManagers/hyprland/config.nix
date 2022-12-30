@@ -5,7 +5,7 @@
     monitor=DP-2,addreserved,0,0,700,700
 
     # Autostart programs
-    exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
+    # exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 50c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
 
     # Input
     input {
@@ -139,7 +139,7 @@
     windowrule = float, obs
     windowrule = float, wdisplays
     windowrule = float, zathura
-    windowrule = float, *.exe
+    # windowrule = float, *.exe
     windowrule = fullscreen, wlogout
     windowrule = float, title:wlogout
     windowrule = fullscreen, title:wlogout
@@ -177,6 +177,10 @@
   bind=SUPER,G,exec, hyprctl dispatch moveworkspacetomonitor 1 DP-2 && hyprctl dispatch moveworkspacetomonitor 2 DP-2 && hyprctl dispatch moveworkspacetomonitor 3 DP-2 && hyprctl dispatch moveworkspacetomonitor 4 DP-2 && hyprctl dispatch moveworkspacetomonitor 5 DP-2 && hyprctl dispatch moveworkspacetomonitor 6 DP-3 && hyprctl dispatch moveworkspacetomonitor 7 DP-3 && hyprctl dispatch moveworkspacetomonitor 8 DP-3 && hyprctl dispatch moveworkspacetomonitor 9 DP-3 && hyprctl dispatch moveworkspacetomonitor 10 DP-2
   bind=SUPER,G,exec, hyprctl dispatch workspace 1 && hyprctl dispatch workspace 2 && hyprctl dispatch workspace 3 && hyprctl dispatch workspace 4 && hyprctl dispatch workspace 5 && hyprctl dispatch workspace 6 && hyprctl dispatch workspace 7 && hyprctl dispatch workspace 8 && hyprctl dispatch workspace 9 && hyprctl dispatch workspace 10 && hyprctl dispatch workspace 6 && hyprctl dispatch workspace 1 && $statusbar
 
+  # DDC control
+  bind=$mainMod,A,exec, ddcutil --bus=7 setvcp 10 0 & ddcutil --bus=8 setvcp 10 0
+  bind=$mainModSHIFT,A,exec, ddcutil --bus=7 setvcp 10 100 & ddcutil --bus=8 setvcp 10 100
+
   #bind=$mainMod,F12,swapactiveworkspaces,DP-2 DP-3
 
   bind=$mainMod,B,exec,swaync-client -t -sw
@@ -187,7 +191,7 @@
   bind=$mainModSHIFT,A,exec, ~/.config/dots/scripts/dcc light
 
   bind=$mainMod,Return,exec,$term
-  bind=CTRL,RETURN,exec,$term
+  # bind=CTRL,RETURN,exec,$term
   bind=$mainMod,Q,killactive,
 
   # bindr=SUPER, SUPER_L, exec, pkill $launcher || $launcher
