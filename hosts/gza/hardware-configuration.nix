@@ -30,7 +30,7 @@
     rm /btrfs
   '';
 in {
-  # boot.initrd.postDeviceCommands = lib.mkBefore wipeScript;
+  boot.initrd.postDeviceCommands = lib.mkBefore wipeScript;
 
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
@@ -83,6 +83,16 @@ in {
   fileSystems."/boot" = {
     device = "/dev/disk/by-label/boot";
     fsType = "vfat";
+  };
+
+  fileSystems."/home/gogsaan/Drives/fun" = {
+    device = "/dev/disk/by-label/Fun";
+    fsType = "ext4";
+  };
+
+  fileSystems."/home/gogsaan/Drives/other" = {
+    device = "/dev/disk/by-label/Other";
+    fsType = "ext4";
   };
 
   swapDevices = [

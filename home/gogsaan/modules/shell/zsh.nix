@@ -167,7 +167,10 @@
       EOF
 
       # Vi mode
-      bindkey -v
+      # bindkey -v
+
+      bindkey "^[[1;3C" forward-word
+      bindkey "^[[1;3D" backward-word
 
       # If this is an xterm set the title to user@host:dir
       case "$TERM" in

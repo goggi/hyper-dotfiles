@@ -46,14 +46,13 @@ in {
           "custom/logo"
           "wlr/workspaces"
           "custom/swallow"
-          "custom/weather"
           "custom/todo"
-          "tray"
         ];
 
-        modules-center = [];
+        modules-center = ["clock"];
 
         modules-right = [
+          "custom/weather"
           "battery"
           "backlight"
           "pulseaudio#microphone"
@@ -62,6 +61,7 @@ in {
           "clock#date"
           "clock"
           "custom/power"
+          "tray"
         ];
 
         "wlr/workspaces" = {
