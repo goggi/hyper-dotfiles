@@ -25,7 +25,6 @@
           ".config/Yubico"
           ".config/1Password"
           ".config/microsoft-edge"
-          ".config/google-chrome-beta"
           ".mozilla"
           ".gnupg"
           ".ssh"

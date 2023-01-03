@@ -14,6 +14,8 @@
   # });
 in {
   home.packages = with pkgs; [
+    polkit_gnome
+    appimage-run
     ddcutil
     alsa-lib
     xorg.xlsclients

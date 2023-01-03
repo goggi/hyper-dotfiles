@@ -5,7 +5,7 @@
     # ./mako.nix
     # ./swayidle.nix
     # ./swaylock.nix
-    # ./waybar.nix
+    ./waybar
     # ./wofi.nix
     # ./zathura.nix
   ];
@@ -38,8 +38,8 @@
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
     XDG_SESSION_DESKTOP = "Hyprland";
-    XCURSOR_SIZE = "100";
-    # GDK_SCALE = "2";
+    XCURSOR_SIZE = "32";
+    GDK_SCALE = "2";
     # QT Variables
     DISABLE_QT5_COMPAT = "0";
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";

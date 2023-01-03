@@ -25,6 +25,7 @@
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
     devshell.url = "github:numtide/devshell";
     flake-utils.url = "github:numtide/flake-utils";
+    bazecor.url = "github:gvolpe/bazecor-nix";
 
     # crane = {
     #   url = "github:ipetkov/crane";
@@ -53,6 +54,7 @@
   outputs = {
     self,
     nixpkgs,
+    bazecor,
     # webcord,
     ...
   } @ inputs: let

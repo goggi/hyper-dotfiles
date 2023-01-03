@@ -57,10 +57,14 @@ in ''
   #custom-weather,
   #custom-swallow,
   #custom-power,
+  #custom-ip,
+  #custom-vpn,
+  #custom-lang,
   #custom-todo,
   #custom-weather,
   #battery,
   #backlight,
+  #temperature,
   #pulseaudio,
   #network,
   #clock,
@@ -80,7 +84,7 @@ in ''
     margin: 6px 3px 6px 9px;
     padding: 6px 18px;
     background-image: url("${Logo}");
-    background-size: 70%;
+    background-size: 60%;
     background-position: center;
     background-repeat: no-repeat;
   }
@@ -119,6 +123,11 @@ in ''
     animation-direction: alternate;
   }
 
+
+  #temperature {
+    background-color: #fab387;
+  }
+
   #backlight {
     background-color: #fab387;
   }
@@ -141,6 +150,10 @@ in ''
 
   #clock {
     background-color: #cba6f7;
+  }
+
+  #custom-lang {
+    background-color: #f2cdcd;
   }
 
   #custom-power {

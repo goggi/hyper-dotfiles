@@ -1,1 +1,1 @@
-sudo nixos-rebuild switch --flake .#gza
+git add . && sudo nixos-rebuild switch --flake .#gza

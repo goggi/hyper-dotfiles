@@ -73,11 +73,16 @@
       {
         timeout = 300;
         command = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off";
-        resumeCommand = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on";
+        resumeCommand = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on && pkill -f waybar || true && waybar &";
       }
       {
         timeout = 310;
         command = "${pkgs.systemd}/bin/loginctl lock-session";
+      }
+      {
+        timeout = 1000;
+        command = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off";
+        resumeCommand = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on && pkill -f waybar || true && waybar &";
       }
     ];
   };

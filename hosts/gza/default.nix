@@ -12,6 +12,8 @@
     ../shared
     ../shared/users/gogsaan.nix
     ../shared/optional/gamemode.nix
+
+    ../catalog/features/virtualization.nix
   ];
 
   boot = {
@@ -109,8 +111,8 @@
   services.xserver.videoDrivers = ["amdgpu"];
 
   services.gnome.gnome-keyring.enable = true;
-
   security = {
+    polkit.enable = true;
     pam.services.swaylock = {
       text = ''
         auth include login
@@ -118,8 +120,27 @@
     };
   };
 
+  systemd = {
+    user.services.polkit-gnome-authentication-agent-1 = {
+      unitConfig = {
+        Description = "polkit-gnome-authentication-agent-1";
+        Wants = ["graphical-session.target"];
+        WantedBy = ["graphical-session.target"];
+        After = ["graphical-session.target"];
+      };
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+    };
+  };
+
   environment = {
     systemPackages = with pkgs; [
+      # inputs.bazecor.packages.${pkgs.system}.default
       acpi
       libva-utils
       ocl-icd
@@ -131,6 +152,5 @@
       NIXOS_OZONE_WL = "1";
     };
   };
-
   system.stateVersion = lib.mkForce "22.11"; # DONT TOUCH THIS
 }

@@ -17,9 +17,8 @@
 in {
   imports = [
     inputs.hyprland.homeManagerModules.default
-    ../../../../../features/desktop/common/wayland
+    ../../../../../catalog/desktops/common/wayland
     ../../dunst
-    ../../waybar
     ../../gtk.nix
     ../../rofi.nix
     ../../swaylock.nix

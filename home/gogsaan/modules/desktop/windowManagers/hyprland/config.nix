@@ -9,10 +9,10 @@
 
     # Input
     input {
-      kb_layout = us
+      kb_layout = us,se
       kb_variant =
       kb_model =
-      kb_options =
+      kb_options = grp:rwin_toggle
       kb_rules =
       follow_mouse = 1
       touchpad {
@@ -148,6 +148,7 @@
     windowrule = idleinhibit focus, mpv
     windowrule = idleinhibit fullscreen, firefox
     windowrule = float, title:^(Media viewer)$
+    # windowrule = float, title:^(Mount and Blade II Bannerlord)$
     windowrule = float, title:^(Transmission)$
     windowrule = float, title:^(Volume Control)$
     windowrule = float, title:^(Picture-in-Picture)$

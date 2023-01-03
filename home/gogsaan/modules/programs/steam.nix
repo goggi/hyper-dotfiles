@@ -28,6 +28,8 @@ in {
       allowOther = true;
       directories = [
         ".local/share/Paradox Interactive"
+        ".cache/AMD"
+        ".cache/mesa_shader_cache"
         ".paradoxlauncher"
         {
           directory = ".local/share/Steam";

@@ -8,6 +8,14 @@
 }: {
   imports = [
     # ./cfgs/waylandDesktopFiles.nix
+    ../catalog/apps/microsoft-edge.nix
+    ../catalog/apps/google-chrome-beta.nix
+
+    # ../catalog/apps/google-chrome-dev.nix
+    ../catalog/apps/signal-desktop.nix
+    ../catalog/apps/firefox
+
+    # ../catalog/apps/vivaldi.nix
 
     ./home.nix
     ./packages.nix
@@ -16,9 +24,9 @@
     # ../common/pkgs/Webcord.nix
 
     ./modules/shell
+
     ./modules/desktop/windowManagers/hyprland
     # ./modules/programs/webcord.nix
-    ./modules/programs/firefox
     # ./modules/programs/discord.nix
     ./modules/programs/vscode.nix
     #./modules/programs/helix.nix
