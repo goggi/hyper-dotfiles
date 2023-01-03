@@ -14,9 +14,4 @@
       };
     };
   };
-
-  # xdg.desktopEntries.vivaldi = {
-  #   name = "Vivaldi";
-  #   exec = "vivaldi --enable-features=UseOzonePlatform --ozone-platform=wayland";
-  # };
 }
