@@ -3,6 +3,14 @@
   pkgs,
   ...
 }: {
+  home = {
+    persistence = {
+      "/persist/home/gogsaan" = {
+        allowOther = true;
+        directories = [".mozilla"];
+      };
+    };
+  };
   programs.firefox = {
     enable = true;
     extensions = with pkgs.nur.repos.rycee.firefox-addons; [

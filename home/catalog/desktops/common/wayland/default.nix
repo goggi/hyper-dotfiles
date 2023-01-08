@@ -3,11 +3,12 @@
     ./gammastep.nix
     # ./kitty.nix
     # ./mako.nix
-    # ./swayidle.nix
-    # ./swaylock.nix
+    ./swayidle.nix
+    ./swaylock.nix
     ./waybar
-    # ./wofi.nix
-    # ./zathura.nix
+    ./rofi.nix
+    ./gtk.nix
+    ./dunst
   ];
 
   home.packages = with pkgs; [

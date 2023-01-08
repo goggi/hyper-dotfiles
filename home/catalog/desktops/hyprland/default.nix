@@ -17,11 +17,7 @@
 in {
   imports = [
     inputs.hyprland.homeManagerModules.default
-    ../../../../../catalog/desktops/common/wayland
-    ../../dunst
-    ../../gtk.nix
-    ../../rofi.nix
-    ../../swaylock.nix
+    ../common/wayland
   ];
 
   home = {

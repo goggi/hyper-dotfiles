@@ -1,11 +1,11 @@
 {
-  pkgs,
-  lib,
   config,
+  pkgs,
   ...
-}: {
-  home.packages = with pkgs; [swaylock-effects];
-
+}: let
+  inherit (config.colorscheme) colors;
+in {
+  home.packages = [pkgs.swaylock-effects];
   programs.swaylock = {
     settings = {
       screenshots = true;
@@ -55,37 +55,4 @@
       text-wrong-color = "#f38ba8";
     };
   };
-
-  services.swayidle = {
-    enable = true;
-    events = [
-      {
-        event = "before-sleep";
-        command = "${pkgs.swaylock-effects}/bin/swaylock -fF";
-      }
-      {
-        event = "lock";
-        command = "${pkgs.swaylock-effects}/bin/swaylock -fF";
-      }
-    ];
-
-    timeouts = [
-      {
-        timeout = 300;
-        command = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off";
-        resumeCommand = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on && pkill -f waybar || true && waybar &";
-      }
-      {
-        timeout = 310;
-        command = "${pkgs.systemd}/bin/loginctl lock-session";
-      }
-      {
-        timeout = 1600;
-        command = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off";
-        resumeCommand = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on && pkill -f waybar || true && waybar &";
-      }
-    ];
-  };
-
-  systemd.user.services.swayidle.Install.WantedBy = lib.mkForce ["hyprland-session.target"];
 }
