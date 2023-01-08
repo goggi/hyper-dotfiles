@@ -2,29 +2,44 @@
   lib,
   pkgs,
   inputs,
+  config,
   ...
 }: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
-    # Shared configuration across all machines
     ../catalog/global
-    ../shared
-    ../shared/users/gogsaan.nix
-    ../shared/optional/gamemode.nix
-
+    ../catalog/users/gogsaan.nix
+    ../catalog/optional/features/amdGpu.nix
+    ../catalog/optional/features/gamemode.nix
     ../catalog/optional/features/virtualization.nix
+    ../catalog/optional/features/btrfsOptinPersistence.nix
+    ../catalog/optional/features/encryptedRoot.nix
   ];
 
+  networking = {
+    hostName = "gza";
+    useDHCP = lib.mkDefault true;
+  };
+
   boot = {
-    #kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    initrd.kernelModules = ["dm-snapshot" "amdgpu"];
+    kernelModules = ["kvm-amd" "i2c-dev"];
+    extraModulePackages = [];
     binfmt.emulatedSystems = ["aarch64-linux"];
-    # kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    #kernelPackages = pkgs.linuxKernel.packages.linux_zen;
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [];
-
-    supportedFilesystems = ["btrfs"];
+    initrd.availableKernelModules =
+      [
+        "xhci_pci"
+        "thunderbolt"
+        "nvme"
+        "usb_storage"
+        "sd_mod"
+      ]
+      ++ config.boot.initrd.luks.cryptoModules;
 
     loader = {
       efi = {
@@ -45,31 +60,6 @@
       };
     };
   };
-
-  hardware = {
-    opengl = {
-      enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-    };
-
-    bluetooth = {
-      enable = true;
-      package = pkgs.bluez;
-    };
-
-    enableRedistributableFirmware = true;
-    pulseaudio.enable = false;
-  };
-
-  hardware.opengl.extraPackages = with pkgs; [
-    amdvlk
-    rocm-opencl-icd
-    rocm-opencl-runtime
-  ];
-  hardware.opengl.extraPackages32 = with pkgs; [
-    driversi686Linux.amdvlk
-  ];
 
   services = {
     btrfs.autoScrub.enable = true;
@@ -108,7 +98,6 @@
   programs.hyprland.enable = true;
   programs.xwayland.enable = true;
   services.xserver.enable = false;
-  services.xserver.videoDrivers = ["amdgpu"];
 
   services.gnome.gnome-keyring.enable = true;
   security = {
@@ -119,24 +108,6 @@
       '';
     };
   };
-
-  # systemd = {
-  #   user.services.polkit-gnome-authentication-agent-1 = {
-  #     unitConfig = {
-  #       Description = "polkit-gnome-authentication-agent-1";
-  #       Wants = ["graphical-session.target"];
-  #       WantedBy = ["graphical-session.target"];
-  #       After = ["graphical-session.target"];
-  #     };
-  #     serviceConfig = {
-  #       Type = "simple";
-  #       ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-  #       Restart = "on-failure";
-  #       RestartSec = 1;
-  #       TimeoutStopSec = 10;
-  #     };
-  #   };
-  # };
 
   environment = {
     systemPackages = with pkgs; [

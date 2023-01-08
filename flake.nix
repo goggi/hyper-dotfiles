@@ -17,33 +17,12 @@
     hyprland.url = "github:hyprwm/Hyprland/";
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     hyprland-contrib.url = "github:hyprwm/contrib";
-
-    # Applciatons
-    # webcord.url = "github:fufexan/webcord-flake";
-
     # Other
     sops-nix.url = github:Mic92/sops-nix;
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
     devshell.url = "github:numtide/devshell";
     flake-utils.url = "github:numtide/flake-utils";
     bazecor.url = "github:gvolpe/bazecor-nix";
-
-    # crane = {
-    #   url = "github:ipetkov/crane";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # Rust Struff that we might not need
-    # rust-overlay = {
-    #   url = "github:oxalica/rust-overlay";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # nil = {
-    #   url = "github:oxalica/nil";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.rust-overlay.follows = "rust-overlay";
-    # };
 
     # Non Flakes
     sf-mono-liga = {
@@ -111,32 +90,6 @@
 
     # nixos-configs with home-manager
     nixosConfigurations = import ./hosts inputs;
-
-    # packages."${system}" = mapModules ./pkgs (p: pkgs.callPackage p { });
-
-    # dev shell (for direnv)
-
-    # devShell = pkgs.mkShell {
-    #   sopsPGPKeyDirs = [
-    #     "./keys/hosts"
-    #     "./keys/users"
-    #   ];
-    #   sopsCreateGPGHome = true; # Make a keyring in .git/gnupg
-    #   nativeBuildInputs = [
-    #     (pkgs.callPackage sops-nix {}).sops-import-keys-hook
-    #   ];
-    # };
-
-    # devShells.${system}.default = pkgs.mkShell {
-    #   sopsPGPKeyDirs = [
-    #     # "${toString ./.}/keys/hosts"
-    #     "${toString ./.}/keys"
-    #   ];
-    #   sopsCreateGPGHome = true; # Make a keyring in .git/gnupg
-    #   nativeBuildInputs = [
-    #     (pkgs.callPackage sops-nix {}).sops-import-keys-hook
-    #   ];
-    # };
 
     devShells.${system}.default = pkgs.mkShell {
       sopsPGPKeyDirs = ["./keys"];

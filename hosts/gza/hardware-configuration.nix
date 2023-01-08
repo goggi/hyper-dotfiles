@@ -30,29 +30,24 @@
     rm /btrfs
   '';
 in {
-  boot.initrd.postDeviceCommands = lib.mkBefore wipeScript;
+  # Hardware configuration
+  hardware = {
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+    };
 
-  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
+    bluetooth = {
+      enable = true;
+      package = pkgs.bluez;
+    };
 
-  boot.initrd.luks.devices.luksroot = {
-    device = "/dev/disk/by-label/cryptroot";
-    preLVM = true;
-    allowDiscards = true;
+    enableRedistributableFirmware = true;
+    pulseaudio.enable = false;
   };
 
-  boot.initrd.availableKernelModules =
-    [
-      "xhci_pci"
-      "thunderbolt"
-      "nvme"
-      "usb_storage"
-      "sd_mod"
-    ]
-    ++ config.boot.initrd.luks.cryptoModules;
-
-  boot.initrd.kernelModules = ["dm-snapshot" "amdgpu"];
-  boot.kernelModules = ["kvm-amd" "i2c-dev"];
-  boot.extraModulePackages = [];
+  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
   fileSystems."/" = {
     device = "/dev/disk/by-label/root";
@@ -60,24 +55,10 @@ in {
     options = ["subvol=root" "compress=zstd" "noatime" "ssd" "space_cache=v2"];
   };
 
-  fileSystems."/persist" = {
-    device = "/dev/disk/by-label/root";
-    fsType = "btrfs";
-    options = ["subvol=persist" "compress=zstd" "noatime" "ssd" "space_cache=v2"];
-    neededForBoot = true;
-  };
-
   fileSystems."/nix" = {
     device = "/dev/disk/by-label/root";
     fsType = "btrfs";
     options = ["subvol=nix" "compress=zstd" "noatime" "ssd" "space_cache=v2"];
-  };
-
-  fileSystems."/var/log" = {
-    device = "/dev/disk/by-label/root";
-    fsType = "btrfs";
-    options = ["subvol=log" "compress=zstd" "noatime" "ssd" "space_cache=v2"];
-    neededForBoot = true;
   };
 
   fileSystems."/boot" = {

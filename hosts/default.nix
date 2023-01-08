@@ -18,7 +18,6 @@ in {
     modules =
       [
         ./gza
-        {networking.hostName = "gza";}
         inputs.hyprland.nixosModules.default
       ]
       ++ sharedModules;
