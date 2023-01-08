@@ -6,6 +6,9 @@
 
     # Autostart programs
     # exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 50c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
+    exec-once = /home/gogsaan/.config/vpn/addConnection.sh
+    exec-once = obsidian
+
 
     # Input
     input {
@@ -32,7 +35,7 @@
       col.inactive_border=0xff313244
       no_border_on_floating = true
       layout = dwindle
-      main_mod = SUPER
+      # main_mod = SUPER
     }
 
     # Misc
@@ -68,6 +71,9 @@
       shadow_range = 4
       shadow_render_power = 2
       col.shadow = 0x66000000
+      dim_special = 0.8
+      dim_inactive = false
+      dim_strength = 0.6
     }
 
     # Blurring layerSurfaces
@@ -157,6 +163,11 @@
     windowrule = size 800 600, title:^(Volume Control)$
     windowrule = move 75 44%, title:^(Volume Control)$
 
+    windowrule = workspace special:music, title:^(YouTube Music)$
+    windowrule = workspace special:obsidian, title:^.*private - Obsidian.*$
+
+    # chrome-cinhimbnkkaeohfgghhklpknlkffjgod-Default
+
     # Variables
     $term = kitty
     $browser = firefox
@@ -173,6 +184,10 @@
 
   # See https://wiki.hyprland.org/Configuring/Keywords/ for more
   $mainMod = SUPER
+
+  # VPN
+  bind=SUPER,n, exec, nmcli connection up ikea passwd-file ~/.config/vpn/passwd
+  bind=SUPERSHIFT,n, exec, nmcli connection down ikea
 
   # Reset workspaces
   bind=SUPER,G,exec, hyprctl dispatch moveworkspacetomonitor 1 DP-2 && hyprctl dispatch moveworkspacetomonitor 2 DP-2 && hyprctl dispatch moveworkspacetomonitor 3 DP-2 && hyprctl dispatch moveworkspacetomonitor 4 DP-2 && hyprctl dispatch moveworkspacetomonitor 5 DP-2 && hyprctl dispatch moveworkspacetomonitor 6 DP-3 && hyprctl dispatch moveworkspacetomonitor 7 DP-3 && hyprctl dispatch moveworkspacetomonitor 8 DP-3 && hyprctl dispatch moveworkspacetomonitor 9 DP-3 && hyprctl dispatch moveworkspacetomonitor 10 DP-2

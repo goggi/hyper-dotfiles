@@ -3,22 +3,13 @@
   pkgs,
   ...
 }: {
-  programs.firefox-beta-bin = {
+  programs.librewolf = {
     enable = true;
-    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      adnauseam
-      enhanced-github
-      enhancer-for-youtube
-      octotree
-      refined-github
-      stylus
-      ublock-origin
-    ];
 
-    package = pkgs.firefox-wayland;
+    package = pkgs.firefox-beta-bin-unwrapped;
 
     profiles = {
-      rxyhn = {
+      gogsaan = {
         id = 0;
         settings = {
           "general.smoothScroll" = true;

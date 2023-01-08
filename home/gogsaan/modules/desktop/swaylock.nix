@@ -80,7 +80,7 @@
         command = "${pkgs.systemd}/bin/loginctl lock-session";
       }
       {
-        timeout = 1000;
+        timeout = 1600;
         command = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off";
         resumeCommand = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on && pkill -f waybar || true && waybar &";
       }

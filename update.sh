@@ -1,0 +1,1 @@
+git add . && nix flake update

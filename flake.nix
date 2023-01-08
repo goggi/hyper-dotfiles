@@ -22,6 +22,7 @@
     # webcord.url = "github:fufexan/webcord-flake";
 
     # Other
+    sops-nix.url = github:Mic92/sops-nix;
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
     devshell.url = "github:numtide/devshell";
     flake-utils.url = "github:numtide/flake-utils";
@@ -54,12 +55,14 @@
   outputs = {
     self,
     nixpkgs,
-    bazecor,
-    # webcord,
+    bazecor, # webcord,
+    sops-nix,
     ...
   } @ inputs: let
     system = "x86_64-linux";
     lib = nixpkgs.lib;
+
+    inherit (builtins) mapAttrs elem;
 
     filterNixFiles = k: v: v == "regular" && lib.hasSuffix ".nix" k;
     importNixFiles = path:
@@ -112,12 +115,35 @@
     # packages."${system}" = mapModules ./pkgs (p: pkgs.callPackage p { });
 
     # dev shell (for direnv)
+
+    # devShell = pkgs.mkShell {
+    #   sopsPGPKeyDirs = [
+    #     "./keys/hosts"
+    #     "./keys/users"
+    #   ];
+    #   sopsCreateGPGHome = true; # Make a keyring in .git/gnupg
+    #   nativeBuildInputs = [
+    #     (pkgs.callPackage sops-nix {}).sops-import-keys-hook
+    #   ];
+    # };
+
+    # devShells.${system}.default = pkgs.mkShell {
+    #   sopsPGPKeyDirs = [
+    #     # "${toString ./.}/keys/hosts"
+    #     "${toString ./.}/keys"
+    #   ];
+    #   sopsCreateGPGHome = true; # Make a keyring in .git/gnupg
+    #   nativeBuildInputs = [
+    #     (pkgs.callPackage sops-nix {}).sops-import-keys-hook
+    #   ];
+    # };
+
     devShells.${system}.default = pkgs.mkShell {
-      packages = with pkgs; [
-        alejandra
-        git
+      sopsPGPKeyDirs = ["./keys"];
+      sopsCreateGPGHome = true;
+      nativeBuildInputs = [
+        (pkgs.callPackage sops-nix {}).sops-import-keys-hook
       ];
-      name = "dotfiles";
     };
 
     # Default formatter for the entire repo

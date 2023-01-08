@@ -11,7 +11,7 @@
     ./locale.nix
     ./network.nix
     ./nix.nix
-    ./ssh.nix
+    # ./ssh.nix
   ];
 
   console = let
@@ -50,6 +50,8 @@
       dbus-update-activation-environment --systemd DISPLAY
       eval $(gnome-keyring-daemon --start --daemonize --components=ssh)
       eval $(ssh-agent)
+      gpg-connect-agent /bye
+      export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
     '';
 
     variables = {

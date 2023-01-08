@@ -14,6 +14,13 @@
   # });
 in {
   home.packages = with pkgs; [
+    yubioath-flutter
+    yubikey-manager-qt
+    yubikey-agent
+    k9s
+    kubectl
+    obsidian
+    networkmanager-openvpn
     polkit_gnome
     appimage-run
     ddcutil

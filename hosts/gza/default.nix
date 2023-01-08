@@ -9,11 +9,12 @@
     ./hardware-configuration.nix
 
     # Shared configuration across all machines
+    ../catalog/global
     ../shared
     ../shared/users/gogsaan.nix
     ../shared/optional/gamemode.nix
 
-    ../catalog/features/virtualization.nix
+    ../catalog/optional/features/virtualization.nix
   ];
 
   boot = {
@@ -86,7 +87,6 @@
         default_session = initial_session;
       };
     };
-
     # add hyprland to display manager sessions
     xserver.displayManager.sessionPackages = [inputs.hyprland.packages.${pkgs.system}.default];
   };
@@ -120,23 +120,23 @@
     };
   };
 
-  systemd = {
-    user.services.polkit-gnome-authentication-agent-1 = {
-      unitConfig = {
-        Description = "polkit-gnome-authentication-agent-1";
-        Wants = ["graphical-session.target"];
-        WantedBy = ["graphical-session.target"];
-        After = ["graphical-session.target"];
-      };
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-    };
-  };
+  # systemd = {
+  #   user.services.polkit-gnome-authentication-agent-1 = {
+  #     unitConfig = {
+  #       Description = "polkit-gnome-authentication-agent-1";
+  #       Wants = ["graphical-session.target"];
+  #       WantedBy = ["graphical-session.target"];
+  #       After = ["graphical-session.target"];
+  #     };
+  #     serviceConfig = {
+  #       Type = "simple";
+  #       ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+  #       Restart = "on-failure";
+  #       RestartSec = 1;
+  #       TimeoutStopSec = 10;
+  #     };
+  #   };
+  # };
 
   environment = {
     systemPackages = with pkgs; [

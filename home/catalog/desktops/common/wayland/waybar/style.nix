@@ -57,6 +57,7 @@ in ''
   #custom-weather,
   #custom-swallow,
   #custom-power,
+  #custom-gpg-agent,
   #custom-ip,
   #custom-vpn,
   #custom-lang,
@@ -93,6 +94,10 @@ in ''
   #custom-todo {
     color: #cdd6f4;
     background-color: #1e1e2e;
+  }
+
+  #custom-gpg-agent{
+    color: #cdd6f4;
   }
 
   #custom-swallow {

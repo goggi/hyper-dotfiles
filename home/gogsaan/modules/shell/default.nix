@@ -62,13 +62,6 @@ in {
 
   services = {
     syncthing.enable = true;
-
-    gpg-agent = {
-      enable = true;
-      pinentryFlavor = "gnome3";
-      enableZshIntegration = true;
-      enableSshSupport = true;
-    };
   };
 
   programs = {

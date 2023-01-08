@@ -1,0 +1,1 @@
+EDITOR=nano  nix-shell -p sops --run "sops hosts/catalog/global/secrets.yaml"

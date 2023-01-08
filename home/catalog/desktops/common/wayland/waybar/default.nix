@@ -4,6 +4,27 @@
   config,
   ...
 }: let
+  jq = "${pkgs.jq}/bin/jq";
+
+  jsonOutput = name: {
+    pre ? "",
+    text ? "",
+    tooltip ? "",
+    alt ? "",
+    class ? "",
+    percentage ? "",
+  }: "${pkgs.writeShellScriptBin "waybar-${name}" ''
+    set -euo pipefail
+    ${pre}
+    ${jq} -cn \
+      --arg text "${text}" \
+      --arg tooltip "${tooltip}" \
+      --arg alt "${alt}" \
+      --arg class "${class}" \
+      --arg percentage "${percentage}" \
+      '{text:$text,tooltip:$tooltip,alt:$alt,class:$class,percentage:$percentage}'
+  ''}/bin/waybar-${name}";
+
   brightnessctl = pkgs.brightnessctl + "/bin/brightnessctl";
   pamixer = pkgs.pamixer + "/bin/pamixer";
   waybar-wttr = pkgs.stdenv.mkDerivation {
@@ -54,11 +75,31 @@ in {
         modules-center = [
           "custom/ip"
           "custom/vpn"
+          "custom/gpg-agent"
         ];
 
         modules-right = [
           "custom/weather"
         ];
+
+        "custom/gpg-agent" = {
+          interval = 2;
+          return-type = "json";
+          exec = let
+            keyring = import ../../../../features/keyring.nix {inherit pkgs;};
+          in
+            jsonOutput "gpg-agent" {
+              pre = ''status=$(${keyring.isUnlocked} && echo "unlocked" || echo "locked")'';
+              alt = "$status";
+              tooltip = "GPG is $status";
+            };
+          format = "{icon}";
+          format-icons = {
+            "locked" = "";
+            "unlocked" = "";
+          };
+          on-click = "";
+        };
 
         "wlr/workspaces" = {
           on-click = "activate";

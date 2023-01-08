@@ -38,12 +38,12 @@
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
     XDG_SESSION_DESKTOP = "Hyprland";
-    XCURSOR_SIZE = "32";
+    # XCURSOR_SIZE = "32";
     GDK_SCALE = "2";
     # QT Variables
     DISABLE_QT5_COMPAT = "0";
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-    QT_STYLE_OVERRIDE = "kvantum";
+    # QT_STYLE_OVERRIDE = "kvantum";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     NIXOS_OZONE_WL = "1";
     # Toolkit Backend Variables
