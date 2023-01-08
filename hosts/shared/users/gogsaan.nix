@@ -54,9 +54,6 @@ in {
     openssh.authorizedKeys.keys = [];
   };
 
-  # sops.secrets.gogsaan-password = {
-  #   restartUnits = ["home-assistant.service"];
-  # };
   sops.secrets.gogsaan-password = {
     sopsFile = ../../catalog/global/secrets.yaml;
     neededForUsers = true;
