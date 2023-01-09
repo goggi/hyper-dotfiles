@@ -37,4 +37,11 @@ in {
     sopsFile = ../../catalog/secrets.yaml;
     neededForUsers = true;
   };
+
+  programs = {
+    _1password-gui = {
+      enable = true;
+      polkitPolicyOwners = ["gogsaan"];
+    };
+  };
 }

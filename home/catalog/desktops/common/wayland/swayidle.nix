@@ -13,7 +13,9 @@
   isLocked = "${pgrep} -x swaylock";
   actionLock = "${swaylock} -S --daemonize";
 
-  lockTime = 4 * 60; # TODO: configurable desktop (10 min)/laptop (4 min)
+  # lockTime = 10 * 60; # TODO: configurable desktop (10 min)/laptop (4 min)
+  lockTime = 10 * 60; # TODO: configurable desktop (10 min)/laptop (4 min)
+  lockTimeFix = 15 * 60; # TODO: configurable desktop (10 min)/laptop (4 min)
 
   mkEvent = time: start: resume: ''
     timeout ${toString (lockTime + time)} '${start}' ${lib.optionalString (resume != null) "resume '${resume}'"}
@@ -23,6 +25,7 @@ in {
   xdg.configFile."swayidle/config".text =
     ''
       timeout ${toString lockTime} '${actionLock}'
+      timeout ${toString lockTimeFix} '${actionLock}'
     ''
     +
     # After 10 seconds of locked, mute mic

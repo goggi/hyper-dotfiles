@@ -5,7 +5,7 @@
 }: {
   home = {
     packages = [
-      pkgs._1password-gui-beta
+      pkgs._1password-gui
       pkgs._1password
     ];
     persistence = {
