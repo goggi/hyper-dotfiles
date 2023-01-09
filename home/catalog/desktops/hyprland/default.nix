@@ -18,6 +18,7 @@ in {
   imports = [
     inputs.hyprland.homeManagerModules.default
     ../common/wayland
+    ../common
   ];
 
   home = {

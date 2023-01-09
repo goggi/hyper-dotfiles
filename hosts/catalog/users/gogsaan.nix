@@ -12,7 +12,7 @@ in {
   users.users.gogsaan = {
     description = "Gogsaan";
     isNormalUser = true;
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
     passwordFile = config.sops.secrets.gogsaan-password.path;
     extraGroups =
       [

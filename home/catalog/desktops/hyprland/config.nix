@@ -8,6 +8,7 @@
     # exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 50c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
     exec-once = /home/gogsaan/.config/vpn/addConnection.sh
     exec-once = obsidian
+    exec-once=swayidle -w
 
 
     # Input
@@ -166,21 +167,14 @@
     windowrule = workspace special:music, title:^(YouTube Music)$
     windowrule = workspace special:obsidian, title:^.*private - Obsidian.*$
 
-    # chrome-cinhimbnkkaeohfgghhklpknlkffjgod-Default
+  # Variables
+  $term = kitty
+  $browser = firefox
+  $editor = code
+  $files = nemo
+  $launcher = killall rofi || rofi -no-lazy-grab -show drun -theme index
+  $emoji = killall rofi || rofi -show emoji -emoji-format "{emoji}" -modi emoji -theme emoji
 
-    # Variables
-    $term = kitty
-    $browser = firefox
-    $editor = code
-    $files = nemo
-    $launcher = killall rofi || rofi -no-lazy-grab -show drun -theme index
-    $emoji = killall rofi || rofi -show emoji -emoji-format "{emoji}" -modi emoji -theme emoji
-
-    # $browser = firefox
-    # $term = ~/.config/dots/scripts/terminal
-    # $launcher = ~/.config/dots/scripts/menu
-    # $notifications = ~/.config/dots/scripts/notifications
-    # $statusbar = ~/.config/dots/scripts/statusbar
 
   # See https://wiki.hyprland.org/Configuring/Keywords/ for more
   $mainMod = SUPER
@@ -214,7 +208,7 @@
 
   bind=$mainMod, D, exec, $launcher
   bind=$mainMod,F,fullscreen
-  bind=$mainModSHIFT,backslash, exec, killall -SIGUSR1 waybar
+  bind=$mainModSHIFT,backslash, exec, pkill waybar || waybar
 
   # Special worspace
   bind=SUPERCTRL,7,movetoworkspace,special:music
@@ -253,12 +247,19 @@
 
 
   # Function keys
-  bind = ,XF86MonBrightnessUp, exec, brightness set +5%
-  bind = ,XF86MonBrightnessDown, exec, brightness set 5%-
+  # bind = ,XF86MonBrightnessUp, exec, brightness set +5%
+  # bind = ,XF86MonBrightnessDown, exec, brightness set 5%-
+  # bind = ,XF86AudioMute, exec, volume -t
+  # bind = ,XF86AudioMicMute, exec, microphone -t
+
+  bind=,XF86AudioNext,exec,playerctl next
+  bind=,XF86AudioPrev,exec,playerctl previous
+  bind=,XF86AudioPlay,exec,playerctl play-pause
+  bind=,XF86AudioStop,exec,playerctl stop
   bind = ,XF86AudioRaiseVolume, exec, volume -i 5
   bind = ,XF86AudioLowerVolume, exec, volume -d 5
-  bind = ,XF86AudioMute, exec, volume -t
-  bind = ,XF86AudioMicMute, exec, microphone -t
+
+
   # Screenshots
   $screenshotarea = hyprctl keyword animation "fadeOut,0,0,default"; grimblast --notify copysave area; hyprctl keyword animation "fadeOut,1,4,default"
   bind = , Print, exec, $screenshotarea
@@ -330,9 +331,9 @@
   bindm = $mainMod, mouse:273, resizewindow
 
 
-    # Mouse bindings
-    bindm = SUPER, mouse:272, movewindow
-    bindm = SUPER, mouse:273, resizewindow
-    bind = SUPER, mouse_down, workspace, e+1
-    bind = SUPER, mouse_up, workspace, e-1
+  # Mouse bindings
+  bindm = SUPER, mouse:272, movewindow
+  bindm = SUPER, mouse:273, resizewindow
+  bind = SUPER, mouse_down, workspace, e+1
+  bind = SUPER, mouse_up, workspace, e-1
 ''

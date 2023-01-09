@@ -37,7 +37,8 @@ in {
     ./nix.nix
     ./starship.nix
     ./transient-services.nix
-    ./zsh.nix
+    # ./zsh.nix
+    ./fish.nix
   ];
 
   home = {

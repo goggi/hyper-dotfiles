@@ -94,6 +94,7 @@
 
   programs = {
     bash.promptInit = ''eval "$(${pkgs.starship}/bin/starship init bash)"'';
+    fish.promptInit = ''eval "$(${pkgs.starship}/bin/starship init fish | source)"'';
 
     adb.enable = true;
     dconf.enable = true;
@@ -117,7 +118,8 @@
 
   environment = {
     binsh = "${pkgs.bash}/bin/bash";
-    shells = with pkgs; [zsh];
+    shells = with pkgs; [fish];
+    # shells = with pkgs; [zsh];
 
     systemPackages = with pkgs; [
       curl

@@ -1,1 +1,0 @@
-git add . && sudo nixos-rebuild switch --flake .#gza --show-trace
