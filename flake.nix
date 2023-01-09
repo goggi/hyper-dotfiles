@@ -34,7 +34,7 @@
   outputs = {
     self,
     nixpkgs,
-    bazecor, # webcord,
+    bazecor,
     sops-nix,
     ...
   } @ inputs: let
@@ -48,13 +48,15 @@
       (lib.lists.forEach (lib.mapAttrsToList (name: _: path + ("/" + name))
           (lib.filterAttrs filterNixFiles (builtins.readDir path))))
       import;
-
     pkgs = import inputs.nixpkgs {
       inherit system;
       config = {
         allowBroken = true;
         allowUnfree = true;
         tarball-ttl = 0;
+        packageOverrides = super: {
+          webcord = pkgs.callPackage ./pkgs/webcord {};
+        };
       };
       overlays = with inputs;
         [

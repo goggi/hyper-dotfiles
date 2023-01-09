@@ -20,6 +20,7 @@
     ../catalog/apps/steam.nix
     ../catalog/apps/kitty.nix
     ../catalog/apps/obsStudio.nix
+    ../catalog/apps/webcord.nix
 
     # Development
     ../catalog/dev/nodejs.nix

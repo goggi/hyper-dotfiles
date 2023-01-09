@@ -67,8 +67,8 @@
     };
 
     gnome = {
-      glib-networking.enable = true;
-      gnome-keyring.enable = true;
+      # glib-networking.enable = true;
+      # gnome-keyring.enable = true;
     };
 
     pipewire = {
@@ -147,7 +147,7 @@
     '';
 
     variables = {
-      EDITOR = "hx";
+      EDITOR = "nano";
       BROWSER = "firefox";
     };
   };

@@ -28,8 +28,8 @@
     kernelModules = ["kvm-amd" "i2c-dev"];
     extraModulePackages = [];
     binfmt.emulatedSystems = ["aarch64-linux"];
-    #kernelPackages = pkgs.linuxKernel.packages.linux_zen;
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    # kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [];
     initrd.availableKernelModules =
       [
@@ -123,5 +123,11 @@
       NIXOS_OZONE_WL = "1";
     };
   };
+
+  services.logind.extraConfig = ''
+    # don’t shutdown when power button is short-pressed
+    HandlePowerKey=ignore
+  '';
+
   system.stateVersion = lib.mkForce "22.11"; # DONT TOUCH THIS
 }
