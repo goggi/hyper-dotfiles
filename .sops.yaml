@@ -11,7 +11,7 @@ keys:
     - &gza age1ykjs7xyg8mym65kmt96fsaw422lrxvx9dc8xht7p5pkshhfh94kscwp503
 
 creation_rules:
-  - path_regex: hosts/catalog/global/secrets.yaml
+  - path_regex: hosts/catalog/secrets.yaml
     key_groups:
     - age:
       - *gza
