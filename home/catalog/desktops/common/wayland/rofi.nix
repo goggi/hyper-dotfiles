@@ -37,108 +37,239 @@ in {
     wtype
   ];
 
-  xdg.configFile."rofi/colors.rasi".text = ''
-    * {
-      background: #181825;
-      prompt: #1e1e2e;
-      border: #1e1e2e;
-      text: #cdd6f4;
-      select: #1e1e2e;
-    }
-  '';
+  # xdg.configFile."rofi/colors.rasi".text = ''
+  #   * {
+  #     background: #181825;
+  #     prompt: #1e1e2e;
+  #     border: #1e1e2e;
+  #     text: #cdd6f4;
+  #     select: #1e1e2e;
+  #   }
+  # '';
+
+  # xdg.configFile."rofi/index.rasi".text = ''
+  #   configuration {
+  #     modi: "drun,emoji";
+  #     display-drun: "Applications";
+  #     drun-display-format: "{name}";
+  #     font: "Inter 13px";
+  #   }
+
+  #   @import "./colors.rasi"
+
+  #   * {
+  #     background-color: transparent;
+  #     text-color: @text;
+  #     margin: 0;
+  #     padding: 0;
+  #   }
+
+  #   window {
+  #     transparency: "real";
+  #     location: center;
+  #     anchor: center;
+  #     fullscreen: false;
+  #     width: 21em;
+  #     x-offset: 0px;
+  #     y-offset: 0px;
+
+  #     enabled: true;
+  #     border: 2px solid;
+  #     border-color: @border;
+  #     border-radius: 8px;
+  #     background-color: @background;
+  #     cursor: "default";
+  #   }
+
+  #   inputbar {
+  #     enabled: true;
+  #     border: 0 0 1px 0 solid;
+  #     border-color: @border;
+  #     background-color: @prompt;
+  #     orientation: horizontal;
+  #     children: [ "entry" ];
+  #   }
+
+  #   entry {
+  #     enabled: true;
+  #     padding: 0.75em 1.25em;
+  #     cursor: text;
+  #     placeholder: "Search application...";
+  #     placeholder-color: @text;
+  #   }
+
+  #   listview {
+  #     enabled: true;
+  #     columns: 1;
+  #     lines: 6;
+  #     cycle: true;
+  #     dynamic: true;
+  #     scrollbar: false;
+  #     layout: vertical;
+  #     reverse: false;
+  #     fixed-height: true;
+  #     fixed-columns: true;
+  #     margin:  0.5em 0 0.75em;
+  #     cursor: "default";
+  #   }
+
+  #   element {
+  #     enabled: true;
+  #     margin: 0 0.75em;
+  #     padding: 0.5em 1em;
+  #     cursor: pointer;
+  #     orientation: vertical;
+  #   }
+
+  #   element normal.normal {
+  #     background-color: inherit;
+  #     text-color: inherit;
+  #   }
+
+  #   element selected.normal {
+  #     border: 2px solid;
+  #     border-color: @border;
+  #     border-radius: 8px;
+  #     background-color: @select;
+  #   }
+
+  #   element-text {
+  #     highlight: bold;
+  #     cursor: inherit;
+  #     vertical-align: 0.5;
+  #     horizontal-align: 0.0;
+  #     font: "Inter Medium 13px";
+  #   }
+  # '';
 
   xdg.configFile."rofi/index.rasi".text = ''
-    configuration {
-      modi: "drun,emoji";
-      display-drun: "Applications";
-      drun-display-format: "{name}";
-      font: "Inter 13px";
+        configuration {
+        modi: "run,drun,emoji";
+        icon-theme: "Oranchelo";
+        show-icons: true;
+        terminal: "kitty";
+        drun-display-format: "{icon} {name}";
+        location: 0;
+        disable-history: false;
+        hide-scrollbar: true;
+        display-drun: "   Apps ";
+        display-run: "   Run ";
+        display-emoji: "   Emoji ";
+        display-window: " 﩯  Window";
+        display-Network: " 󰤨  Network";
+        sidebar-mode: true;
+        }
+    * {
+        bg-col:  #1e1e2e;
+        bg-col-light: #1e1e2e;
+        border-col: #1e1e2e;
+        selected-col: #1e1e2e;
+        blue: #89b4fa;
+        fg-col: #cdd6f4;
+        fg-col2: #f38ba8;
+        grey: #6c7086;
+
+        width: 600;
+        font: "JetBrainsMono Nerd Font 14";
     }
 
-    @import "./colors.rasi"
-
-    * {
-      background-color: transparent;
-      text-color: @text;
-      margin: 0;
-      padding: 0;
+    element-text, element-icon , mode-switcher {
+        background-color: inherit;
+        text-color:       inherit;
     }
 
     window {
-      transparency: "real";
-      location: center;
-      anchor: center;
-      fullscreen: false;
-      width: 21em;
-      x-offset: 0px;
-      y-offset: 0px;
+        transparency: "real";
+        height: 360px;
+        border: 3px;
+        border-color: @border-col;
+        background-color: @bg-col;
+    }
 
-      enabled: true;
-      border: 2px solid;
-      border-color: @border;
-      border-radius: 8px;
-      background-color: @background;
-      cursor: "default";
+    mainbox {
+        background-color: @bg-col;
     }
 
     inputbar {
-      enabled: true;
-      border: 0 0 1px 0 solid;
-      border-color: @border;
-      background-color: @prompt;
-      orientation: horizontal;
-      children: [ "entry" ];
+        children: [prompt,entry];
+        background-color: @bg-col;
+        border-radius: 5px;
+        padding: 2px;
+    }
+
+    prompt {
+        background-color: @blue;
+        padding: 6px;
+        text-color: @bg-col;
+        border-radius: 3px;
+        margin: 20px 0px 0px 20px;
+    }
+
+    textbox-prompt-colon {
+        expand: false;
+        str: ":";
     }
 
     entry {
-      enabled: true;
-      padding: 0.75em 1.25em;
-      cursor: text;
-      placeholder: "Search application...";
-      placeholder-color: @text;
+        padding: 6px;
+        margin: 20px 0px 0px 10px;
+        text-color: @fg-col;
+        background-color: @bg-col;
     }
 
     listview {
-      enabled: true;
-      columns: 1;
-      lines: 6;
-      cycle: true;
-      dynamic: true;
-      scrollbar: false;
-      layout: vertical;
-      reverse: false;
-      fixed-height: true;
-      fixed-columns: true;
-      margin:  0.5em 0 0.75em;
-      cursor: "default";
+        border: 0px 0px 0px;
+        padding: 6px 0px 0px;
+        margin: 10px 0px 0px 20px;
+        columns: 2;
+        lines: 5;
+        background-color: @bg-col;
     }
 
     element {
-      enabled: true;
-      margin: 0 0.75em;
-      padding: 0.5em 1em;
-      cursor: pointer;
-      orientation: vertical;
+        padding: 5px;
+        background-color: @bg-col;
+        text-color: @fg-col  ;
     }
 
-    element normal.normal {
-      background-color: inherit;
-      text-color: inherit;
+    element-icon {
+        size: 25px;
     }
 
-    element selected.normal {
-      border: 2px solid;
-      border-color: @border;
-      border-radius: 8px;
-      background-color: @select;
+    element selected {
+        background-color:  @selected-col ;
+        text-color: @fg-col2  ;
     }
 
-    element-text {
-      highlight: bold;
-      cursor: inherit;
-      vertical-align: 0.5;
-      horizontal-align: 0.0;
-      font: "Inter Medium 13px";
+    mode-switcher {
+        spacing: 0;
+      }
+
+    button {
+        padding: 10px;
+        background-color: @bg-col-light;
+        text-color: @grey;
+        vertical-align: 0.5;
+        horizontal-align: 0.5;
+    }
+
+    button selected {
+      background-color: @bg-col;
+      text-color: @blue;
+    }
+
+    message {
+        background-color: @bg-col-light;
+        margin: 2px;
+        padding: 2px;
+        border-radius: 5px;
+    }
+
+    textbox {
+        padding: 6px;
+        margin: 20px 0px 0px 20px;
+        text-color: @blue;
+        background-color: @bg-col-light;
     }
   '';
 

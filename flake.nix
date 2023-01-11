@@ -56,6 +56,8 @@
         tarball-ttl = 0;
         packageOverrides = super: {
           webcord = pkgs.callPackage ./pkgs/webcord {};
+          # gamescope = pkgs.callPackage ./pkgs/gamescope {};
+          # firefoxpwa = pkgs.callPackage ./pkgs/firefoxpwa {};
         };
       };
       overlays = with inputs;

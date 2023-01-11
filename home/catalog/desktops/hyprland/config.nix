@@ -1,17 +1,21 @@
 ''
-    # Monitors
+    # Monitorsss
     monitor=DP-3,preferred,1505x0,1.2
     monitor=DP-2,preferred,0x890,1.2
     monitor=DP-2,addreserved,0,0,700,700
 
     # Autostart programs
-    # exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 50c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
+    # exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
+    exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     exec-once = /home/gogsaan/.config/vpn/addConnection.sh
+    exec-once = waybar
+    exec-once = swaybg --mode fill --image /home/gogsaan/Pictures/wallpapers/nixos/cat_leaves.png
     exec-once = obsidian
-    exec-once=swayidle -w
+    exec-once = 1password
+    exec-once = swayidle -w
+    exec-once = hyprlandWorkspaceMonitorFix
 
-
-    # Input
+    # Inputs
     input {
       kb_layout = us,se
       kb_variant =
@@ -19,11 +23,11 @@
       kb_options = grp:rwin_toggle
       kb_rules =
       follow_mouse = 1
-      touchpad {
-          disable_while_typing = true
-          natural_scroll = true
-          tap-to-click = true
-      }
+      # touchpad {
+      #     disable_while_typing = true
+      #     natural_scroll = true
+      #     tap-to-click = true
+      # }
       sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
     }
 
@@ -34,7 +38,7 @@
       border_size = 2
       col.active_border=0xffcba6f7
       col.inactive_border=0xff313244
-      no_border_on_floating = true
+      no_border_on_floating = false
       layout = dwindle
       # main_mod = SUPER
     }
@@ -44,7 +48,7 @@
       disable_hyprland_logo = true
       disable_splash_rendering = true
       mouse_move_enables_dpms = true
-      no_vfr = false
+      no_vfr = true
       enable_swallow = true
       swallow_regex = ^(kitty)$
     }
@@ -97,21 +101,21 @@
       animation = border, 1, 5, default
       animation = fade, 1, 7, smoothIn
       animation = fadeDim, 1, 7, smoothIn
-      animation = workspaces, 1, 5, overshot, slidevert
+      animation = workspaces, 1, 4, overshot, slidevert
       # animation=workspaces,1,5,default,fade
     }
 
     # Gestures
-    gestures {
-      workspace_swipe = true
-      workspace_swipe_fingers = 3
-    }
+    # gestures {
+    #   workspace_swipe = true
+    #   workspace_swipe_fingers = 3
+    # }
 
     # Layouts
     dwindle {
       col.group_border_active=0xff89b4fa
       col.group_border=0xff585b70
-      no_gaps_when_only = true
+      no_gaps_when_only = false
       pseudotile = true # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
       preserve_split = true # you probably want this
     }
@@ -164,15 +168,30 @@
     windowrule = size 800 600, title:^(Volume Control)$
     windowrule = move 75 44%, title:^(Volume Control)$
 
+
+
+    windowrule = workspace special:music, title:^(YouTube Music)$
     windowrule = workspace special:music, title:^(YouTube Music)$
     windowrule = workspace special:obsidian, title:^.*private - Obsidian.*$
+    windowrule = workspace 10, title:^.*WebCord.*$
+    windowrule = workspace 10, title:^.*Skype.*$
+    windowrule = workspace 10, title:^.*Signal.*$
+
+    # Navicat Premium
+    windowrule = float, title:^.*New Connection.*$
+    windowrule = move 0 0, title:^.*New Connection.*$
+    windowrule = float, title:^.*Edit Connection.*$
+    windowrule = move 0 0, title:^.*Edit Connection.*$
+
+
 
   # Variables
   $term = kitty
   $browser = firefox
   $editor = code
   $files = nemo
-  $launcher = killall rofi || rofi -no-lazy-grab -show drun -theme index
+  $launcher = killall rofi || rofi -no-lazy-grab -show drun -theme index  -sort
+  # $launcher = killall wofi || wofi -S drun
   $emoji = killall rofi || rofi -show emoji -emoji-format "{emoji}" -modi emoji -theme emoji
 
 
@@ -210,6 +229,17 @@
   bind=$mainMod,F,fullscreen
   bind=$mainModSHIFT,backslash, exec, pkill waybar || waybar
 
+    # DP-2,2560x1080@120,850x900,1
+    # DP-2,addreserved,0,0,0,0
+    # DP-2,highrr,0x890,1.2
+    # DP-2,addreserved,0,0,700,700
+
+  # Screen resolution
+  bind=$mainMod, slash, exec, hyprctl keyword monitor "DP-2,highrr,0x890,1.2"
+  bind=$mainMod, slash, exec, hyprctl keyword monitor "DP-2,addreserved,0,0,700,700"
+  bind=$mainModSHIFT, slash, exec, hyprctl keyword monitor "DP-2,2560x1080@120,850x900,1"
+  bind=$mainModSHIFT, slash, exec, hyprctl keyword monitor "DP-2,addreserved,0,0,0,0"
+
   # Special worspace
   bind=SUPERCTRL,7,movetoworkspace,special:music
   bind=SUPERCTRL,8,movetoworkspace,special:obsidian
@@ -222,10 +252,15 @@
   windowrule=size 800 500,title:^(fly_is_kitty)$
   windowrule=float,title:^(fly_is_kitty)$
 
-  # Group
+  # Groups
   bind=$mainMod,W,togglegroup,
-  bind=$mainMod,Left,changegroupactive, b
-  bind=$mainMod,Right,changegroupactive, f
+  bind=SHIFT_ALT,Left,changegroupactive, b
+  bind=SHIFT_ALT,Right,changegroupactive, f
+
+  # Ser resolution
+
+  bind=$mainMod_SHIFT,E,exec, hyprctl keyword monitor DP-2,addreserved,0,0,1200,1200
+
 
   # Padding
   bind=SUPER,E,exec, hyprctl keyword monitor DP-2,addreserved,0,0,1200,1200

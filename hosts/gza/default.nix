@@ -16,6 +16,7 @@
     ../catalog/optional/features/virtualization.nix
     ../catalog/optional/features/btrfsOptinPersistence.nix
     ../catalog/optional/features/encryptedRoot.nix
+    ../catalog/optional/apps/podman.nix
   ];
 
   networking = {
@@ -28,8 +29,8 @@
     kernelModules = ["kvm-amd" "i2c-dev"];
     extraModulePackages = [];
     binfmt.emulatedSystems = ["aarch64-linux"];
-    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
-    # kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [];
     initrd.availableKernelModules =
       [
@@ -117,6 +118,8 @@
       ocl-icd
       qt5.qtwayland
       qt5ct
+      # gamescope
+      # mangohud
     ];
 
     variables = {

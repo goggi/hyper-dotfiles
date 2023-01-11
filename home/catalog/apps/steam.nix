@@ -21,7 +21,6 @@
 in {
   home.packages = with pkgs; [
     steam-with-pkgs
-    protontricks
   ];
   home.persistence = {
     "/persist/games/gogsaan" = {

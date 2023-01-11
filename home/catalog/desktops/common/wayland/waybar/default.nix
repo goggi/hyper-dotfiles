@@ -45,7 +45,7 @@ in {
 
   programs.waybar = {
     enable = true;
-    systemd.enable = true;
+    # systemd.enable = true;
     # package = pkgs.waybar.overrideAttrs (oldAttrs: {
     #   mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
     #   patchPhase = ''

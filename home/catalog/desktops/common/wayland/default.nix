@@ -7,6 +7,7 @@
     ./swaylock.nix
     ./waybar
     ./rofi.nix
+    ./wofi.nix
     ./gtk.nix
     ./dunst
   ];
@@ -27,6 +28,7 @@
     waypipe
     grim
     slurp
+    swaybg
   ];
 
   services.gammastep = {
@@ -39,8 +41,8 @@
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
     XDG_SESSION_DESKTOP = "Hyprland";
-    # XCURSOR_SIZE = "32";
-    GDK_SCALE = "2";
+    # XCURSOR_SIZE = "24";
+    # GDK_SCALE = "2";
     # QT Variables
     DISABLE_QT5_COMPAT = "0";
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
@@ -53,25 +55,27 @@
     CLUTTER_BACKEND = "wayland";
     GDK_BACKEND = "wayland";
     LIBSEAT_BACKEND = "logind";
+    MOZ_ENABLE_WAYLAND = "1";
+    QT_QPA_PLATFORM = "wayland";
   };
 
-  systemd.user.services.swaybg = let
-    wallpaper = builtins.fetchurl rec {
-      name = "wallpaper-${sha256}.png";
-      url = "https://raw.githubusercontent.com/rxyhn/wallpapers/main/catppuccin/cat_leaves.png";
-      sha256 = "1894y61nx3p970qzxmqjvslaalbl2skj5sgzvk38xd4qmlmi9s4i";
-    };
-  in {
-    Unit = {
-      Description = "Wayland wallpaper daemon";
-      PartOf = ["graphical-session.target"];
-      After = ["graphical-session.target"];
-    };
-    Service = {
-      ExecStart = "${pkgs.swaybg}/bin/swaybg --mode fill --image ${wallpaper}";
-      Restart = "on-failure";
-    };
+  # systemd.user.services.swaybg = let
+  #   wallpaper = builtins.fetchurl rec {
+  #     name = "wallpaper-${sha256}.png";
+  #     url = "https://raw.githubusercontent.com/rxyhn/wallpapers/main/catppuccin/cat_leaves.png";
+  #     sha256 = "1894y61nx3p970qzxmqjvslaalbl2skj5sgzvk38xd4qmlmi9s4i";
+  #   };
+  # in {
+  #   Unit = {
+  #     Description = "Wayland wallpaper daemon";
+  #     PartOf = ["graphical-session.target"];
+  #     After = ["graphical-session.target"];
+  #   };
+  #   Service = {
+  #     ExecStart = "${pkgs.swaybg}/bin/swaybg --mode fill --image ${wallpaper}";
+  #     Restart = "on-failure";
+  #   };
 
-    Install.WantedBy = ["graphical-session.target"];
-  };
+  #   Install.WantedBy = ["graphical-session.target"];
+  # };
 }

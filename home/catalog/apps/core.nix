@@ -5,6 +5,8 @@
   ...
 }: {
   home.packages = with pkgs; [
+    # firefoxpwa
+    bindfs
     networkmanager-openvpn
     polkit_gnome
     appimage-run

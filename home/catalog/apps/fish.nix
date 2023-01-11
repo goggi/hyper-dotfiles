@@ -5,15 +5,18 @@
     };
     shellAliases = {
       nb = "echo \"Check Yubikey\" && git add . && sudo nixos-rebuild switch --flake .#gza --show-trace";
-      nu = "nix flake update";
+      nu = "echo \"Check Yubikey\" && sudo nix flake update";
       sops = "nix-shell -p sops --run \" sops hosts/catalog/secrets.yaml \"";
       ls = "exa";
       cdd = "cd $(find ~ -type d | fzf)";
       la = "${pkgs.exa}/bin/exa -lah";
       getip = "curl ifconfig.me";
       ssh = "kitty +kitten ssh";
+      k9s = "k9s --kubeconfig $KUBECONFIG";
+      kubefwd = "echo \"Check Yubikey\" && sudo cp /etc/hosts /etc/hostsTemp && sudo rm /etc/hosts && sudo cp /etc/hostsTemp /etc/hosts && sudo ~/Applications/bin/kubefwd svc -c $KUBECONFIG -n database";
       # Clear screen and scrollback
       clear = "printf '\\033[2J\\033[3J\\033[1;1H'";
+      docker = "podman";
     };
     functions = {
       fish_greeting = "";
@@ -71,6 +74,20 @@
         set -U fish_pager_color_prefix        'white' '--bold' '--underline'
         set -U fish_pager_color_progress      'brwhite' '--background=cyan'
         starship init fish | source
+
+        set -U KUBECONFIG /home/gogsaan/Projects/crawlyfi/terraform/kubernetes/kubeconfig
+
       '';
+  };
+
+  home = {
+    persistence = {
+      "/persist/home/gogsaan" = {
+        allowOther = true;
+        files = [
+          ".local/share/fish/fish_history"
+        ];
+      };
+    };
   };
 }

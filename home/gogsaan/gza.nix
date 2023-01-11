@@ -8,31 +8,40 @@
 }: {
   imports = [
     inputs.impermanence.nixosModules.home-manager.impermanence
+
     # Apps
     ../catalog/apps/core.nix
-    ../catalog/apps/googleChromeBeta.nix
-    ../catalog/apps/vscode.nix
-    ../catalog/apps/1password.nix
-    ../catalog/apps/obsidian.nix
     ../catalog/apps/k8sManagment.nix
-    ../catalog/apps/signalDesktop.nix
-    ../catalog/apps/firefox
-    ../catalog/apps/steam.nix
-    ../catalog/apps/kitty.nix
     ../catalog/apps/obsStudio.nix
-    ../catalog/apps/webcord.nix
+    ../catalog/apps/kitty.nix
 
     # Development
     ../catalog/dev/nodejs.nix
     ../catalog/dev/python3.nix
 
-    # Features
-    ../catalog/features/shell
-    ../catalog/features/cli
-    ../catalog/features/yubikey.nix
-
     # Desktops
     ../catalog/desktops/hyprland
+
+    # Features
+    ../catalog/features/shell
+
+    # Persistance
+    # App with persistance
+    ../catalog/apps/googleChromeBeta.nix
+    ../catalog/apps/vscode.nix
+    ../catalog/apps/1password.nix
+    ../catalog/apps/obsidian.nix
+    ../catalog/apps/signalDesktop.nix
+    ../catalog/apps/firefox
+    ../catalog/apps/webcord.nix
+    ../catalog/apps/fish.nix
+    ../catalog/apps/navicat.nix
+
+    # Games with persistance
+    ../catalog/apps/steam.nix
+
+    # Features with persistance
+    ../catalog/features/yubikey.nix
   ];
 
   home = {
@@ -40,7 +49,7 @@
     homeDirectory = "/home/gogsaan";
     stateVersion = "22.11";
     extraOutputsToInstall = ["doc" "devdoc"];
-    # Seems like it needs to be commented out on first boot,
+    # Seems like it needs to be commented out on first boot,ss
     persistence = {
       "/persist/home/gogsaan" = {
         directories = [
