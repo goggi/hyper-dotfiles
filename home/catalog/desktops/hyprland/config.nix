@@ -243,9 +243,11 @@
   # Special worspace
   bind=SUPERCTRL,7,movetoworkspace,special:music
   bind=SUPERCTRL,8,movetoworkspace,special:obsidian
+  bind=SUPERCTRL,9,movetoworkspace,special:chatgpt
 
   bind=SUPER,Tab,togglespecialworkspace,music
   bind=$mainMod,F12,togglespecialworkspace,obsidian
+  bind=$mainMod,e,togglespecialworkspace,chatgpt
 
   # FLY IS KITTY
   windowrule=move center,title:^(fly_is_kitty)$
@@ -259,11 +261,9 @@
 
   # Ser resolution
 
-  bind=$mainMod_SHIFT,E,exec, hyprctl keyword monitor DP-2,addreserved,0,0,1200,1200
-
 
   # Padding
-  bind=SUPER,E,exec, hyprctl keyword monitor DP-2,addreserved,0,0,1200,1200
+  # bind=SUPER,E,exec, hyprctl keyword monitor DP-2,addreserved,0,0,1200,1200
   bind=SUPER,R,exec, hyprctl keyword monitor DP-2,addreserved,0,0,700,700
   bind=SUPER,T,exec, hyprctl keyword monitor DP-2,addreserved,0,0,0,0
 
@@ -297,7 +297,7 @@
 
   # Screenshots
   $screenshotarea = hyprctl keyword animation "fadeOut,0,0,default"; grimblast --notify copysave area; hyprctl keyword animation "fadeOut,1,4,default"
-  bind = , Print, exec, $screenshotarea
+  bind = SUPERSHIFT, t, exec, $screenshotarea
   bind = CTRL, Print, exec, grimblast --notify --cursor copysave output
   bind = SUPER SHIFT CTRL, R, exec, grimblast --notify --cursor copysave output
   bind = ALT, Print, exec, grimblast --notify --cursor copysave screen
