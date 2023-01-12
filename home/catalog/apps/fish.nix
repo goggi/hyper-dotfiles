@@ -17,6 +17,7 @@
       # Clear screen and scrollback
       clear = "printf '\\033[2J\\033[3J\\033[1;1H'";
       docker = "podman";
+      protonge = "protonup -d \"/home/gogsaan/.steam/steam/compatibilitytools.d\" && protonup ";
     };
     functions = {
       fish_greeting = "";
