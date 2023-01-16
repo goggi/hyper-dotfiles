@@ -18,6 +18,7 @@
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     hyprland-contrib.url = "github:hyprwm/contrib";
     # Other
+    vscode-server.url = "github:msteen/nixos-vscode-server";
     sops-nix.url = github:Mic92/sops-nix;
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
     devshell.url = "github:numtide/devshell";
@@ -36,6 +37,7 @@
     nixpkgs,
     bazecor,
     sops-nix,
+    vscode-server,
     ...
   } @ inputs: let
     system = "x86_64-linux";

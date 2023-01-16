@@ -15,7 +15,7 @@ in {
     openFirewall = true;
     forwardX11 = false;
     useDns = false;
-    ports = [22];
+    ports = [49022];
     kbdInteractiveAuthentication = false;
     passwordAuthentication = lib.mkForce false;
     permitRootLogin = lib.mkForce "no";

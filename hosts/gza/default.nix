@@ -17,6 +17,7 @@
     ../catalog/optional/features/btrfsOptinPersistence.nix
     ../catalog/optional/features/encryptedRoot.nix
     ../catalog/optional/apps/podman.nix
+    # ../catalog/optional/apps/taskwarrior.nix
   ];
 
   networking = {

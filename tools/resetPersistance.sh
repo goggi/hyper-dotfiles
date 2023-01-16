@@ -26,6 +26,9 @@ rm -R ~/.config/google-chrome-beta || true
 # VSCode
 rm -R ~/.config/Code || true
 rm -R ~/.vscode || true
+# VSCode-Insiders
+rm -R ~/.config/Code - Insiders || true
+rm -R ~/.vscode-insiders || true
 # 1Password
 rm -R ~/.config/1Password || true
 # Obsidian
@@ -40,6 +43,8 @@ rm -R ~/.config/WebCord || true
 rm -R ~/.config/navicat || true
 # k8sManagment
 rm -R ~/.config/k9s || true
+# Btop
+rm -R ~/.config/btop || true
 
 # Gaming
 rm -R ~/.local/share/"Paradox Interactive" || true

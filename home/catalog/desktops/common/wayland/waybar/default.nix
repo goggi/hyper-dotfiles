@@ -79,7 +79,6 @@ in {
         ];
 
         modules-right = [
-          "custom/weather"
         ];
 
         "custom/gpg-agent" = {
@@ -299,14 +298,15 @@ in {
 
         modules-right = [
           # "custom/weather"
-
+          "custom/weather"
           "temperature"
           "battery"
           "backlight"
           # "pulseaudio#microphone"
-          "pulseaudio"
           # "network"
           "custom/lang"
+          "pulseaudio"
+
           "clock#date"
           "clock"
           # "custom/power"
@@ -412,7 +412,7 @@ in {
         "custom/weather" = {
           tooltip = true;
           format = "{}";
-          interval = 30;
+          interval = 600;
           exec = "${waybar-wttr}/bin/waybar-wttr";
           return-type = "json";
         };

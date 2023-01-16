@@ -4,6 +4,9 @@
     shellAbbrs = {
     };
     shellAliases = {
+      cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
+      bloat = "nix path-info -Sh /run/current-system";
+      cat = "${pkgs.bat}/bin/bat --style=plain";
       nb = "echo \"Check Yubikey\" && git add . && sudo nixos-rebuild switch --flake .#gza --show-trace";
       nu = "echo \"Check Yubikey\" && sudo nix flake update";
       sops = "nix-shell -p sops --run \" sops hosts/catalog/secrets.yaml \"";

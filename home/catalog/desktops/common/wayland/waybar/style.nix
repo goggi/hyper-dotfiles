@@ -128,42 +128,33 @@ in ''
     animation-direction: alternate;
   }
 
-
-  #temperature {
-    background-color: #fab387;
-  }
-
-  #backlight {
-    background-color: #fab387;
-  }
-
-  #pulseaudio.microphone {
-    background-color: #f9e2af;
-  }
-
-  #pulseaudio {
-    background-color: #a6e3a1;
-  }
-
-  #network {
-    background-color: #94e2d5;
-  }
-
-  #clock.date {
+  #custom-weather {
+    color: #000000;
     background-color: #89b4fa;
   }
 
-  #clock {
+  #temperature {
     background-color: #cba6f7;
   }
 
   #custom-lang {
+    background-color: #fab387;
+
+  }
+  #pulseaudio {
     background-color: #f2cdcd;
   }
 
-  #custom-power {
-    background-color: #f2cdcd;
+  #clock.date {
+    background-color: #94e2d5
   }
+
+  #clock {
+    background-color: #a6e3a1;
+
+  }
+
+
 
   tooltip {
     font-family: "Inter", sans-serif;

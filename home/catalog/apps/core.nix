@@ -6,6 +6,7 @@
 }: {
   home.packages = with pkgs; [
     # firefoxpwa
+    # gnumake
     bindfs
     networkmanager-openvpn
     polkit_gnome

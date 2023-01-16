@@ -19,6 +19,14 @@ in {
       [
         ./gza
         inputs.hyprland.nixosModules.default
+        inputs.vscode-server.nixosModule
+        ({
+          config,
+          pkgs,
+          ...
+        }: {
+          services.vscode-server.enable = true;
+        })
       ]
       ++ sharedModules;
 

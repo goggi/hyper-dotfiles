@@ -66,11 +66,6 @@
       packages = with pkgs; [dconf gcr];
     };
 
-    gnome = {
-      # glib-networking.enable = true;
-      # gnome-keyring.enable = true;
-    };
-
     pipewire = {
       enable = true;
       wireplumber.enable = true;

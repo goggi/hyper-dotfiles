@@ -20,6 +20,7 @@
     # wl-mirror
     # wl-mirror-pick
     # ydotool
+    swappy
     swayidle
     clipman
     pulseaudio

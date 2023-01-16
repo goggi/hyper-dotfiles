@@ -64,7 +64,7 @@ in {
   };
 
   programs = {
-    ssh.enable = false;
+    ssh.enable = true;
 
     gpg = {
       enable = true;

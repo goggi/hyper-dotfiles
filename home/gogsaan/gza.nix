@@ -36,6 +36,10 @@
     ../catalog/apps/webcord.nix
     ../catalog/apps/fish.nix
     ../catalog/apps/navicat.nix
+    # ../catalog/apps/googleChrome.nix
+    ../catalog/apps/btop.nix
+    ../catalog/apps/vscodeInsiders.nix
+    # ../catalog/apps/neovim.nix
 
     # Games with persistance
     ../catalog/apps/steam.nix
@@ -75,6 +79,11 @@
       };
     };
   };
+
+  #Add support for ./local/bin
+  # home.sessionPath = [
+  #   "$HOME/.local/bin"
+  # ];
 
   # disable manuals as nmd fails to build often
   manual = {

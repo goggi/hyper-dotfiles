@@ -26,9 +26,17 @@ bindfs -o fsname=/persist/home/gogsaan/.config/navicat /persist/home/gogsaan/.co
 # k8sManagment
 bindfs -o fsname=/persist/home/gogsaan/.config/k9s /persist/home/gogsaan/.config/k9s /home/gogsaan/.config/k9s
 
+# btop
+bindfs -o fsname=/persist/home/gogsaan/.config/btop /persist/home/gogsaan/.config/btop /home/gogsaan/.config/btop
+
 # VSCode
 bindfs -o fsname=/persist/home/gogsaan/.vscode /persist/home/gogsaan/.vscode /home/gogsaan/.vscode
 bindfs -o fsname=/persist/home/gogsaan/.config/Code /persist/home/gogsaan/.config/Code /home/gogsaan/.config/Code
+
+# VSCodeInsiders
+bindfs -o fsname=/persist/home/gogsaan/.vscode-insiders /persist/home/gogsaan/.vscode-insiders /home/gogsaan/.vscode-insiders    
+bindfs -o fsname=/persist/home/gogsaan/.config/"Code - Insiders" /persist/home/gogsaan/.config/"Code - Insiders" /home/gogsaan/.conf
+ig/"Code - Insiders"
 
 # Steam
 bindfs -o fsname=/persist/games/gogsaan/.local/share/Paradox Interactive /persist/games/gogsaan/.local/share/Paradox Interactive /home/gogsaan/.local/share/Paradox Interactive

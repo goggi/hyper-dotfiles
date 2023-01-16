@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  fetchTarball,
   ...
 }: {
   programs.vscode = {
@@ -12,13 +13,14 @@
       '';
     };
   };
+
   home.persistence = {
     "/persist/home/gogsaan" = {
       allowOther = true;
       directories = [
         ".config/Code"
         ".vscode"
-        ];
+      ];
     };
   };
 }

@@ -14,6 +14,8 @@
     exec-once = 1password
     exec-once = swayidle -w
     exec-once = hyprlandWorkspaceMonitorFix
+    exec-once = htop
+
 
     # Inputs
     input {
@@ -76,7 +78,7 @@
       shadow_range = 4
       shadow_render_power = 2
       col.shadow = 0x66000000
-      dim_special = 0.8
+      dim_special = 0
       dim_inactive = false
       dim_strength = 0.6
     }
@@ -101,7 +103,7 @@
       animation = border, 1, 5, default
       animation = fade, 1, 7, smoothIn
       animation = fadeDim, 1, 7, smoothIn
-      animation = workspaces, 1, 4, overshot, slidevert
+      animation = workspaces, 1, 5, overshot, slidevert
       # animation=workspaces,1,5,default,fade
     }
 
@@ -168,7 +170,8 @@
     windowrule = size 800 600, title:^(Volume Control)$
     windowrule = move 75 44%, title:^(Volume Control)$
 
-
+    windowrule = float, title:^(swappy)$
+    windowrule = move 35% 10%, title:^(swappy)$
 
     windowrule = workspace special:music, title:^(YouTube Music)$
     windowrule = workspace special:music, title:^(YouTube Music)$
@@ -176,6 +179,8 @@
     windowrule = workspace 10, title:^.*WebCord.*$
     windowrule = workspace 10, title:^.*Skype.*$
     windowrule = workspace 10, title:^.*Signal.*$
+    windowrule = workspace 3, title:^(htop)$
+    windowrule = float, title:^(htop)$
 
     # Navicat Premium
     windowrule = float, title:^.*New Connection.*$
@@ -216,6 +221,8 @@
   bind=$mainMod,V,exec,swaync-client -C -sw && swaync-client -cp -sw
 
   bind=$mainModSHIFT,Return,exec,$browser
+  bind=$mainModCTRL,Return,exec,google-chrome-beta
+
   bind=$mainMod,A,exec, ~/.config/dots/scripts/dcc dark
   bind=$mainModSHIFT,A,exec, ~/.config/dots/scripts/dcc light
 
@@ -244,10 +251,13 @@
   bind=SUPERCTRL,7,movetoworkspace,special:music
   bind=SUPERCTRL,8,movetoworkspace,special:obsidian
   bind=SUPERCTRL,9,movetoworkspace,special:chatgpt
+  bind=SUPERCTRL,0,movetoworkspace,special:pomo
 
   bind=SUPER,Tab,togglespecialworkspace,music
   bind=$mainMod,F12,togglespecialworkspace,obsidian
-  bind=$mainMod,e,togglespecialworkspace,chatgpt
+  bind=SUPER_SHIFT,Tab,togglespecialworkspace,pomo
+  bind=SUPER_SHIFT,F12,togglespecialworkspace,chatgpt
+
 
   # FLY IS KITTY
   windowrule=move center,title:^(fly_is_kitty)$
@@ -256,21 +266,22 @@
 
   # Groups
   bind=$mainMod,W,togglegroup,
-  bind=SHIFT_ALT,Left,changegroupactive, b
-  bind=SHIFT_ALT,Right,changegroupactive, f
+  bind=ALT,Left,changegroupactive, b
+  bind=ALT,Right,changegroupactive, f
 
   # Ser resolution
 
 
   # Padding
   # bind=SUPER,E,exec, hyprctl keyword monitor DP-2,addreserved,0,0,1200,1200
-  bind=SUPER,R,exec, hyprctl keyword monitor DP-2,addreserved,0,0,700,700
+  bind=SUPER,E,exec, hyprctl keyword monitor DP-2,addreserved,0,0,700,700
+  bind=SUPER,R,exec, hyprctl keyword monitor DP-2,addreserved,0,0,500,500
   bind=SUPER,T,exec, hyprctl keyword monitor DP-2,addreserved,0,0,0,0
 
   # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
   bind = $mainMod, C, killactive,
   bind = $mainMod, M, exit,
-  bind = $mainModSHIFT, F, togglefloating,
+  bind = ALT, F, togglefloating,
   bind = $mainMod, P, pseudo, # dwindle
   bind = $mainMod, J, togglesplit, # dwindle
 
@@ -296,8 +307,13 @@
 
 
   # Screenshots
-  $screenshotarea = hyprctl keyword animation "fadeOut,0,0,default"; grimblast --notify copysave area; hyprctl keyword animation "fadeOut,1,4,default"
-  bind = SUPERSHIFT, t, exec, $screenshotarea
+  $screenshotarea = hyprctl keyword animation "fadeOut,0,0,5"; grimblast --notify --cursor save area - | swappy -f - ; hyprctl keyword animation "fadeOut,1,4,5"
+  $screensscreen = hyprctl keyword animation "fadeOut,0,0,5"; grimblast --notify --cursor save screen - | swappy -f - ; hyprctl keyword animation "fadeOut,1,4,5"
+
+
+
+  bind = SUPER_SHIFT, t, exec, $screenshotarea
+  bind = SUPER_CTRL, t, exec, $screensscreen
   bind = CTRL, Print, exec, grimblast --notify --cursor copysave output
   bind = SUPER SHIFT CTRL, R, exec, grimblast --notify --cursor copysave output
   bind = ALT, Print, exec, grimblast --notify --cursor copysave screen
